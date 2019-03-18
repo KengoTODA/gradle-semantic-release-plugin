@@ -1,0 +1,73 @@
+{
+  "name": "@KengoTODA/gradle-semantic-release-plugin",
+  "version": "0.0.0-development",
+  "description": "Automated release management for Gradle project",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KengoTODA/gradle-semantic-release-plugin.git"
+  },
+  "keywords": [
+    "semantic-release",
+    "gradle"
+  ],
+  "files": [
+    "README.md",
+    "LICENSE",
+    "lib"
+  ],
+  "author": "Kengo TODA",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "prebuild": "tslint -p tsconfig.json",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "@semantic-release/error": "^2.2.0"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/git": "^7.0.8",
+    "@semantic-release/npm": "^5.1.4",
+    "@semantic-release/release-notes-generator": "^7.1.4",
+    "@types/dotenv": "^6.1.0",
+    "@types/signale": "^1.2.1",
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.3333"
+  },
+  "engines": {
+    "node": "^8.15",
+    "npm": "^6.4",
+    "yarn": "^1.12"
+  },
+  "peerDependencies": {
+    "semantic-release": "^15.13.3"
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      {
+        "path": "@semantic-release/changelog",
+        "changelogFile": "CHANGELOG.md"
+      },
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "publish": [
+      "@semantic-release/npm"
+    ],
+    "generateNotes": [
+      "@semantic-release/release-notes-generator"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,17 @@
+dist: xenial
+language: node_js
+node_js:
+  - "8"
+  - "10"
+cache:
+  directories:
+    - ~/.yarn
+script:
+  - yarn build
+# jobs:
+#   include:
+#     - stage: deploy
+#       script: yarn run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
