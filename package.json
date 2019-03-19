@@ -23,18 +23,23 @@
   "scripts": {
     "build": "tsc",
     "prebuild": "tslint -p tsconfig.json",
+    "test": "jest",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@semantic-release/error": "^2.2.0"
+    "@semantic-release/error": "^2.2.0",
+    "split2": "^3.1.1"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.2",
     "@semantic-release/git": "^7.0.8",
     "@semantic-release/npm": "^5.1.4",
     "@semantic-release/release-notes-generator": "^7.1.4",
-    "@types/dotenv": "^6.1.0",
+    "@types/jest": "^24.0.11",
     "@types/signale": "^1.2.1",
+    "@types/split2": "^2.1.6",
+    "jest": "^24.5.0",
+    "ts-jest": "^24.0.0",
     "tslint": "^5.14.0",
     "typescript": "^3.3.3333"
   },
@@ -45,6 +50,16 @@
   },
   "peerDependencies": {
     "semantic-release": "^15.13.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "/test/src/.*\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ]
   },
   "release": {
     "verifyConditions": [
