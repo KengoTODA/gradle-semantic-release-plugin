@@ -1,0 +1,12 @@
+// https://docs.gradle.org/current/userguide/artifact_management.html
+plugins {
+  id 'maven'
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      // detailed configuration
+    }
+  }
+}
