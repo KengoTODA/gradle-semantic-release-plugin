@@ -15,4 +15,4 @@ export async function updateVersion(cwd: string, version: string): Promise<void>
 export default async function prepare(pluginConfig: object, context: IContext) {
   const {cwd, nextRelease} = context;
   await updateVersion(cwd, nextRelease.version);
-};
+}
