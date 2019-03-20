@@ -7,7 +7,7 @@ const parseProperties = promisify(parse);
 const writeProperties = promisify(stringify);
 
 describe("Test for prepare step", () => {
-  beforeEach(async () => {
+  afterEach(async () => {
     const gradleProject = join(cwd(), "test/project/with-properties-file");
     const path = join(gradleProject, "gradle.properties");
     await writeProperties({version: "0.1.2"}, {path});

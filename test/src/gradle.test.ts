@@ -1,6 +1,6 @@
 import {join} from "path";
 import {cwd} from "process";
-import {getCommand, getTaskToPublish} from "../../src/gradle";
+import {getCommand, getTaskToPublish, getVersion} from "../../src/gradle";
 
 describe("Test for gradle handling", () => {
   test("getCommand() return 'gradle' when there is no gradle wrapper", async () => {
@@ -32,5 +32,18 @@ describe("Test for gradle handling", () => {
     const gradleProject = join(cwd(), "test/project/with-legacy-publishing");
     const task = await getTaskToPublish(gradleProject, process.env);
     expect(task).toBe("uploadArchives");
+  });
+
+  test("getVersion() returns version defined in build.gradle", async () => {
+    expect.assertions(1);
+    const gradleProject = join(cwd(), "test/project/without-properties-file");
+    const version = await getVersion(gradleProject, process.env);
+    expect(version).toBe("1.2.3");
+  });
+  test("getVersion() returns version defined in gradle.properties", async () => {
+    expect.assertions(1);
+    const gradleProject = join(cwd(), "test/project/with-properties-file");
+    const version = await getVersion(gradleProject, process.env);
+    expect(version).toBe("0.1.2");
   });
 });

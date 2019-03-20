@@ -60,3 +60,33 @@ export function getTaskToPublish(cwd: string, env: NodeJS.ProcessEnv): Promise<s
     }
   });
 }
+
+/**
+ * @param {string} cwd the path of current working directory
+ * @return A promise that resolves version of the target project
+ */
+export function getVersion(cwd: string, env: NodeJS.ProcessEnv): Promise<string> {
+  return new Promise(async (resolve, reject) => {
+    const command = await getCommand(cwd);
+    const child = spawn(command, ["properties", "-q"], { cwd, env, stdio: ["inherit", "pipe"] });
+    if (child.stdout === null) {
+      reject(new Error("Unexpected error: stdout of subprocess is null"));
+    } else {
+      let version = "";
+      child.stdout.pipe(split()).on("data", (line: string) => {
+        if (line.startsWith("version:")) {
+          version = line.substring("version:".length).trim();
+        }
+      });
+      child.on("close", (code: number) => {
+        if (code !== 0) {
+          reject(new Error(`Unexpected error: Gradle failed with status code ${code}`));
+        }
+        resolve(version);
+      });
+      child.on("error", (err) => {
+        reject(err);
+      });
+    }
+  });
+}

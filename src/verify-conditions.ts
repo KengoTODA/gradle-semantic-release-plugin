@@ -11,7 +11,5 @@ module.exports = async function verifyConditions(pluginConfig: object, context: 
   if (task === "") {
     throw new Error("No task found that can publish artifacts");
   }
-  // TODO confirm that version is not defined in build.gradle and other places.
-  // `gradle properties -q` will print effective version.
   logger.debug("Verified conditions, and found no problem");
 };
