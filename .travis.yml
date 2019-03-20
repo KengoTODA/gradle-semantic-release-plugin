@@ -5,6 +5,7 @@ cache:
     - ~/.yarn
 script:
   - yarn build
+  - yarn test
 # jobs:
 #   include:
 #     - stage: deploy
