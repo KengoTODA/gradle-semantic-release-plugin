@@ -1,0 +1,22 @@
+// https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven
+plugins {
+  id 'java'
+  id 'maven-publish'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.example'
+            artifactId = 'project'
+            version = '1.0'
+
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "$buildDir/repo"
+        }
+    }
+}

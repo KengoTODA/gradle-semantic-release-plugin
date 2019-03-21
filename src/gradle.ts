@@ -90,3 +90,18 @@ export function getVersion(cwd: string, env: NodeJS.ProcessEnv): Promise<string>
     }
   });
 }
+
+export function publishArtifact(cwd: string, env: NodeJS.ProcessEnv) {
+  return new Promise(async (resolve, reject) => {
+    const command = getCommand(cwd);
+    const task = getTaskToPublish(cwd, env);
+    const child = spawn(await command, [await task, "-q"], { cwd, env });
+    child.on("close", (code) => {
+      if (code !== 0) {
+        reject(`Failed to publish: Gradle failed with status code ${code}.`);
+      } else {
+        resolve();
+      }
+    });
+  });
+}
