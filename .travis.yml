@@ -3,6 +3,7 @@ language: node_js
 cache:
   directories:
     - ~/.yarn
+    - ~/.gradle
 before_script:
   # make sure we have gradle in ~/.gradle
   - travis_wait test/project/without-plugin/gradlew -v
