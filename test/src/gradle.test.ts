@@ -1,6 +1,8 @@
+import {access, constants} from "fs";
 import {join} from "path";
 import {cwd} from "process";
-import {getCommand, getTaskToPublish, getVersion} from "../../src/gradle";
+import {sync as rmdir} from "rimraf";
+import {getCommand, getTaskToPublish, getVersion, publishArtifact} from "../../src/gradle";
 
 describe("Test for gradle handling", () => {
   test("getCommand() return 'gradle' when there is no gradle wrapper", async () => {
@@ -45,5 +47,22 @@ describe("Test for gradle handling", () => {
     const gradleProject = join(cwd(), "test/project/with-properties-file");
     const version = await getVersion(gradleProject, process.env);
     expect(version).toBe("0.1.2");
+  });
+
+  describe("publishArtifact()", () => {
+    beforeEach(() => {
+      rmdir(join(cwd(), "test/project/with-publish/build"));
+    });
+
+    test("runs 'publish' task", async (done) => {
+      expect.assertions(1);
+      const gradleProject = join(cwd(), "test/project/with-publish");
+      await publishArtifact(gradleProject, process.env);
+      const file = join(gradleProject, "build/repo/com/example/project/1.0/project-1.0.jar");
+      access(file, constants.F_OK, (err) => {
+        expect(err).toBeNull();
+        done();
+      });
+    });
   });
 });

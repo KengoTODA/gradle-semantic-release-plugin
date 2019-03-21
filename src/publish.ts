@@ -1,6 +1,7 @@
 import {IContext} from "./definition";
+import {publishArtifact} from "./gradle";
 
 module.exports = async function publish(pluginConfig: object, context: IContext) {
-  const {logger} = context;
-  logger.info(`Hello publish! Your config is:${JSON.stringify(pluginConfig)}`);
+  const {cwd, env} = context;
+  await publishArtifact(cwd, env as NodeJS.ProcessEnv);
 };

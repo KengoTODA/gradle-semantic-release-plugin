@@ -36,9 +36,11 @@
     "@semantic-release/npm": "^5.1.4",
     "@semantic-release/release-notes-generator": "^7.1.4",
     "@types/jest": "^24.0.11",
+    "@types/rimraf": "^2.0.2",
     "@types/signale": "^1.2.1",
     "@types/split2": "^2.1.6",
     "jest": "^24.5.0",
+    "rimraf": "^2.6.3",
     "ts-jest": "^24.0.0",
     "tslint": "^5.14.0",
     "typescript": "^3.3.3333"
