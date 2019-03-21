@@ -20,19 +20,19 @@ describe("Test for gradle handling", () => {
     const gradleProject = join(cwd(), "test/project/without-plugin");
     const task = await getTaskToPublish(gradleProject, process.env);
     expect(task).toBe("");
-  });
+  }, 10000);
   test("getTaskToPublish() return 'publish' when there is maven-publish-plugin", async () => {
     expect.assertions(1);
     const gradleProject = join(cwd(), "test/project/with-maven-publish-plugin");
     const task = await getTaskToPublish(gradleProject, process.env);
     expect(task).toBe("publish");
-  });
+  }, 10000);
   test("getTaskToPublish() return 'uploadArchives' when there is available legacy publishing method", async () => {
     expect.assertions(1);
     const gradleProject = join(cwd(), "test/project/with-legacy-publishing");
     const task = await getTaskToPublish(gradleProject, process.env);
     expect(task).toBe("uploadArchives");
-  });
+  }, 10000);
 
   test("getVersion() returns version defined in build.gradle", async () => {
     expect.assertions(1);
