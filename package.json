@@ -1,6 +1,6 @@
 {
   "name": "@KengoTODA/gradle-semantic-release-plugin",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Automated release management for Gradle project",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
