@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.0.0...v1.0.1) (2019-03-22)
+
+
+### Bug Fixes
+
+* exported items should be a function, not set of functions ([860d546](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/860d546))
+
 # 1.0.0 (2019-03-22)
 
 
