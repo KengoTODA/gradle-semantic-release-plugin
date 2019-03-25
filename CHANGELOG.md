@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.0.1...v1.0.2) (2019-03-25)
+
+
+### Bug Fixes
+
+* **package.json:** remove needless requirement for the version of node and yarn ([9cc19eb](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/9cc19eb))
+
 ## [1.0.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.0.0...v1.0.1) (2019-03-22)
 
 
