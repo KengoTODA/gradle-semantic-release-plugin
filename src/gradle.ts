@@ -1,6 +1,6 @@
-import {spawn} from "child_process";
-import {access, constants} from "fs";
-import {join} from "path";
+import { spawn } from "child_process";
+import { access, constants } from "fs";
+import { join } from "path";
 import split = require("split2");
 
 /**
@@ -9,7 +9,7 @@ import split = require("split2");
  */
 export function getCommand(cwd: string): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    access(join(cwd, "gradlew"), constants.F_OK, (err) => {
+    access(join(cwd, "gradlew"), constants.F_OK, err => {
       if (err) {
         if (err.code === "ENOENT") {
           resolve("gradle");
@@ -27,10 +27,17 @@ export function getCommand(cwd: string): Promise<string> {
  * @param {string} cwd the path of current working directory
  * @return A promise that resolves name of task to publish artifact
  */
-export function getTaskToPublish(cwd: string, env: NodeJS.ProcessEnv): Promise<string> {
+export function getTaskToPublish(
+  cwd: string,
+  env: NodeJS.ProcessEnv
+): Promise<string> {
   return new Promise(async (resolve, reject) => {
     const command = await getCommand(cwd);
-    const child = spawn(command, ["tasks", "-q"], { cwd, env, stdio: ["inherit", "pipe"] });
+    const child = spawn(command, ["tasks", "-q"], {
+      cwd,
+      env,
+      stdio: ["inherit", "pipe"]
+    });
     if (child.stdout === null) {
       reject(new Error("Unexpected error: stdout of subprocess is null"));
     } else {
@@ -50,11 +57,15 @@ export function getTaskToPublish(cwd: string, env: NodeJS.ProcessEnv): Promise<s
       });
       child.on("close", (code: number) => {
         if (code !== 0) {
-          reject(new Error(`Unexpected error: Gradle failed with status code ${code}`));
+          reject(
+            new Error(
+              `Unexpected error: Gradle failed with status code ${code}`
+            )
+          );
         }
         resolve(task);
       });
-      child.on("error", (err) => {
+      child.on("error", err => {
         reject(err);
       });
     }
@@ -65,10 +76,17 @@ export function getTaskToPublish(cwd: string, env: NodeJS.ProcessEnv): Promise<s
  * @param {string} cwd the path of current working directory
  * @return A promise that resolves version of the target project
  */
-export function getVersion(cwd: string, env: NodeJS.ProcessEnv): Promise<string> {
+export function getVersion(
+  cwd: string,
+  env: NodeJS.ProcessEnv
+): Promise<string> {
   return new Promise(async (resolve, reject) => {
     const command = await getCommand(cwd);
-    const child = spawn(command, ["properties", "-q"], { cwd, env, stdio: ["inherit", "pipe"] });
+    const child = spawn(command, ["properties", "-q"], {
+      cwd,
+      env,
+      stdio: ["inherit", "pipe"]
+    });
     if (child.stdout === null) {
       reject(new Error("Unexpected error: stdout of subprocess is null"));
     } else {
@@ -80,11 +98,15 @@ export function getVersion(cwd: string, env: NodeJS.ProcessEnv): Promise<string>
       });
       child.on("close", (code: number) => {
         if (code !== 0) {
-          reject(new Error(`Unexpected error: Gradle failed with status code ${code}`));
+          reject(
+            new Error(
+              `Unexpected error: Gradle failed with status code ${code}`
+            )
+          );
         }
         resolve(version);
       });
-      child.on("error", (err) => {
+      child.on("error", err => {
         reject(err);
       });
     }
@@ -96,7 +118,7 @@ export function publishArtifact(cwd: string, env: NodeJS.ProcessEnv) {
     const command = getCommand(cwd);
     const task = getTaskToPublish(cwd, env);
     const child = spawn(await command, [await task, "-q"], { cwd, env });
-    child.on("close", (code) => {
+    child.on("close", code => {
       if (code !== 0) {
         reject(`Failed to publish: Gradle failed with status code ${code}.`);
       } else {

@@ -1,4 +1,4 @@
-import {Signale} from "signale";
+import { Signale } from "signale";
 
 export interface ILastRelease {
   version: string;
