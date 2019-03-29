@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.0.2...v1.0.3) (2019-03-29)
+
+
+### Bug Fixes
+
+* relax requirement for engines ([41f1a15](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/41f1a15)), closes [/github.com/semantic-release/semantic-release/blob/a90a1038e7acb39eb30558cde18b628078fbd1f3/package.json#L72](https://github.com//github.com/semantic-release/semantic-release/blob/a90a1038e7acb39eb30558cde18b628078fbd1f3/package.json/issues/L72)
+
 ## [1.0.2](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.0.1...v1.0.2) (2019-03-25)
 
 
