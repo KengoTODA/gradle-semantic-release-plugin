@@ -10,7 +10,7 @@ module.exports = async function verifyConditions(
   if (command !== "./gradlew") {
     throw new Error(`Gradle wrapper not found at ${cwd}`);
   }
-  const task = await getTaskToPublish(cwd, env as NodeJS.ProcessEnv);
+  const task = await getTaskToPublish(cwd, env as NodeJS.ProcessEnv, logger);
   if (task === "") {
     throw new Error("No task found that can publish artifacts");
   }
