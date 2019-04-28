@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.0.3...v1.1.0) (2019-04-28)
+
+
+### Features
+
+* Add Artifactory plugin support ([371eb81](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/371eb81))
+
 ## [1.0.3](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.0.2...v1.0.3) (2019-03-29)
 
 
