@@ -4,6 +4,7 @@ import { cwd } from "process";
 import { sync as rmdir } from "rimraf";
 import { Signale } from "signale";
 import {
+  buildOptions,
   getCommand,
   getTaskToPublish,
   getVersion,
@@ -109,6 +110,20 @@ describe("Test for gradle handling", () => {
         expect(err).toBeNull();
         done();
       });
+    });
+  });
+  describe("buildOptions()", () => {
+    test("returns an empty array", () => {
+      const result = buildOptions({});
+      expect(result).toHaveLength(0);
+    });
+    test("adds project properties when specific there is envvar", () => {
+      const env = process.env;
+      env["GRADLE_PUBLISH_KEY"] = "my-key";
+      env["GRADLE_PUBLISH_SECRET"] = "my-secret";
+      const result = buildOptions(env);
+      expect(result).toContain("-Pgradle.publish.key=my-key");
+      expect(result).toContain("-Pgradle.publish.secret=my-secret");
     });
   });
 });
