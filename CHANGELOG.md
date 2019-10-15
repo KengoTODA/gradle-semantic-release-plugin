@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.1.0...v1.2.0) (2019-10-15)
+
+
+### Features
+
+* support plugin-publish-plugin ([62428ea](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/62428ea))
+
 # [1.1.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.0.3...v1.1.0) (2019-04-28)
 
 
