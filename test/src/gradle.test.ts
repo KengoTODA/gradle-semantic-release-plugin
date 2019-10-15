@@ -65,6 +65,16 @@ describe("Test for gradle handling", () => {
     );
     expect(task).toBe("artifactoryDeploy");
   }, 10000);
+  test("getTaskToPublish() return 'publishPlugins' when there is available java-gradle-plugin", async () => {
+    expect.assertions(1);
+    const gradleProject = join(cwd(), "test/project/with-java-gradle-plugin");
+    const task = await getTaskToPublish(
+      gradleProject,
+      process.env,
+      new Signale()
+    );
+    expect(task).toBe("publishPlugins");
+  }, 10000);
 
   test("getVersion() returns version defined in build.gradle", async () => {
     expect.assertions(1);

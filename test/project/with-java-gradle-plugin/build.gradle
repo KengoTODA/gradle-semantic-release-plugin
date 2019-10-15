@@ -1,0 +1,4 @@
+// https://docs.gradle.org/current/userguide/java_gradle_plugin.html
+plugins {
+  id 'java-gradle-plugin'
+}
