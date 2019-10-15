@@ -8,6 +8,7 @@ const INFO_ARTIFACTORY = `Two publishing plugins have found: Gradle Artifactory 
 Gradle Artifactory is used for release.`;
 const INFO_PUBLISH_PLUGINS = `Two publishing plugins have found: Java Gradle Plugin and Maven Publish.
 Java Gradle Plugin is used for release.`;
+const ERROR_MULTIPLE_PLUGIN = "Found multiple tasks to publish";
 
 /**
  * @param {string} cwd the path of current working directory
@@ -53,7 +54,7 @@ export function getTaskToPublish(
         if (line.startsWith("artifactoryDeploy -")) {
           // Plugins Gradle Artifactory Plugin and Maven Publish Plugin are often used together
           if (task !== "" && task !== "publish") {
-            reject(new Error("Found multiple tasks to publish"));
+            reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
           if (task === "publish") {
             logger.info(INFO_ARTIFACTORY);
@@ -62,7 +63,7 @@ export function getTaskToPublish(
         } else if (line.startsWith("publish -")) {
           // Plugins Gradle Artifactory Plugin and Maven Publish Plugin are often used together
           if (task !== "" && task !== "artifactoryDeploy") {
-            reject(new Error("Found multiple tasks to publish"));
+            reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
           if (task === "artifactoryDeploy") {
             logger.info(INFO_ARTIFACTORY);
@@ -73,14 +74,14 @@ export function getTaskToPublish(
           }
         } else if (line.startsWith("uploadArchives -")) {
           if (task !== "") {
-            reject(new Error("Found multiple tasks to publish"));
+            reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
           task = "uploadArchives";
         } else if (line.startsWith("publishPlugins -")) {
           if (task === "publish") {
             logger.info(INFO_PUBLISH_PLUGINS);
           } else if (task !== "") {
-            reject(new Error("Found multiple tasks to publish"));
+            reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
           task = "publishPlugins";
         }
