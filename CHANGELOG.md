@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.2.0...v1.2.1) (2019-10-15)
+
+
+### Bug Fixes
+
+* plugin-publish-plugin needs project property ([c7cd7e2](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/c7cd7e2))
+
 # [1.2.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.1.0...v1.2.0) (2019-10-15)
 
 
