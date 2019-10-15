@@ -144,6 +144,19 @@ export function getVersion(
   });
 }
 
+export function buildOptions(env: NodeJS.ProcessEnv): string[] {
+  const options = [];
+  /* tslint:disable:no-string-literal */
+  if (env["GRADLE_PUBLISH_KEY"]) {
+    options.push(`-Pgradle.publish.key=${env["GRADLE_PUBLISH_KEY"]}`);
+  }
+  if (env["GRADLE_PUBLISH_SECRET"]) {
+    options.push(`-Pgradle.publish.secret=${env["GRADLE_PUBLISH_SECRET"]}`);
+  }
+  /* tslint:enable:no-string-literal */
+  return options;
+}
+
 export function publishArtifact(
   cwd: string,
   env: NodeJS.ProcessEnv,
@@ -152,7 +165,9 @@ export function publishArtifact(
   return new Promise(async (resolve, reject) => {
     const command = getCommand(cwd);
     const task = getTaskToPublish(cwd, env, logger);
-    const child = spawn(await command, [await task, "-q"], { cwd, env });
+    const options = [await task, "-q"].concat(buildOptions(env));
+    logger.info(`launching child process with options: ${options.join(" ")}`);
+    const child = spawn(await command, options, { cwd, env });
     child.on("close", code => {
       if (code !== 0) {
         reject(`Failed to publish: Gradle failed with status code ${code}.`);
