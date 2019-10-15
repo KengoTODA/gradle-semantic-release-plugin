@@ -1,0 +1,5 @@
+// https://guides.gradle.org/publishing-plugins-to-gradle-plugin-portal/
+plugins {
+  id 'java-gradle-plugin'
+  id 'com.gradle.plugin-publish' version '0.10.1'
+}
