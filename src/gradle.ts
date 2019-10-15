@@ -6,6 +6,8 @@ import split = require("split2");
 
 const INFO_ARTIFACTORY = `Two publishing plugins have found: Gradle Artifactory and Maven Publish.
 Gradle Artifactory is used for release.`;
+const INFO_PUBLISH_PLUGINS = `Two publishing plugins have found: Java Gradle Plugin and Maven Publish.
+Java Gradle Plugin is used for release.`;
 
 /**
  * @param {string} cwd the path of current working directory
@@ -64,6 +66,8 @@ export function getTaskToPublish(
           }
           if (task === "artifactoryDeploy") {
             logger.info(INFO_ARTIFACTORY);
+          } else if (task === "publishPlugins") {
+            logger.info(INFO_PUBLISH_PLUGINS);
           } else {
             task = "publish";
           }
@@ -72,6 +76,13 @@ export function getTaskToPublish(
             reject(new Error("Found multiple tasks to publish"));
           }
           task = "uploadArchives";
+        } else if (line.startsWith("publishPlugins -")) {
+          if (task === "publish") {
+            logger.info(INFO_PUBLISH_PLUGINS);
+          } else if (task !== "") {
+            reject(new Error("Found multiple tasks to publish"));
+          }
+          task = "publishPlugins";
         }
       });
       child.on("close", (code: number) => {
