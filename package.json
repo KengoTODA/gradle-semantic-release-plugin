@@ -33,6 +33,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.2",
     "@semantic-release/git": "^7.0.8",
+    "@semantic-release/github": "^5.5.3",
     "@semantic-release/npm": "^5.1.4",
     "@semantic-release/release-notes-generator": "^7.1.4",
     "@types/jest": "^24.0.11",
@@ -70,7 +71,8 @@
     "verifyConditions": [
       "@semantic-release/changelog",
       "@semantic-release/npm",
-      "@semantic-release/git"
+      "@semantic-release/git",
+      "@semantic-release/github"
     ],
     "prepare": [
       {
@@ -81,7 +83,8 @@
       "@semantic-release/git"
     ],
     "publish": [
-      "@semantic-release/npm"
+      "@semantic-release/npm",
+      "@semantic-release/github"
     ],
     "generateNotes": [
       "@semantic-release/release-notes-generator"
