@@ -20,7 +20,7 @@ jobs:
         with:
           java-version: "11.x"
       - name: Download Gradle
-        run: test/project/without-plugin/gradlew -v
+        run: test/project/with-artifactory-plugin/gradlew dependencies
       - name: Build and Release
         run: |
           yarn
