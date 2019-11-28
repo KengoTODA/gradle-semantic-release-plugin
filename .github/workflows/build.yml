@@ -1,0 +1,44 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Use JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: "11.x"
+      - name: Cache Yarn
+        id: cache-yarn
+        uses: actions/cache@v1
+        with:
+          path: ~/.yarn
+          key: ${{ runner.os }}-yarn-${{ matrix.node-version }}
+      - name: Cache Gradle
+        id: cache-gradle
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle
+          key: ${{ runner.os }}-gradle
+      - name: Download Gradle
+        run: test/project/without-plugin/gradlew -v
+      - name: Build
+        run: |
+          yarn
+          yarn build
+          yarn test
+          yarn run semantic-release --dry-run
+        env:
+          CI: true
