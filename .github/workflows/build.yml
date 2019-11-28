@@ -33,7 +33,7 @@ jobs:
           path: ~/.gradle
           key: ${{ runner.os }}-gradle
       - name: Download Gradle
-        run: test/project/without-plugin/gradlew -v
+        run: test/project/with-artifactory-plugin/gradlew dependencies
       - name: Build
         run: |
           yarn
