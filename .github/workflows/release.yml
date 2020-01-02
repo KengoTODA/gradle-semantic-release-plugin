@@ -29,3 +29,4 @@ jobs:
           yarn run semantic-release
         env:
           CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

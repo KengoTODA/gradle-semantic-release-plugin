@@ -42,3 +42,4 @@ jobs:
           yarn run semantic-release --dry-run
         env:
           CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
