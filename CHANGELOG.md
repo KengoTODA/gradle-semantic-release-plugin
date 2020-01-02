@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.2.1...v1.3.0) (2020-01-02)
+
+
+### Bug Fixes
+
+* **deps:** [security] bump npm from 6.11.2 to 6.13.4 ([66ae1a2](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/66ae1a2))
+
+
+### Features
+
+* support project that has no gradle.properties ([83fefe3](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/83fefe3))
+
 ## [1.2.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.2.0...v1.2.1) (2019-10-15)
 
 
