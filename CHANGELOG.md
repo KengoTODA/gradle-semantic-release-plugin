@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.3.0...v1.3.1) (2020-01-02)
+
+
+### Bug Fixes
+
+* **deps:** [security] bump handlebars from 4.1.1 to 4.5.3 ([84e738b](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/84e738b))
+
 # [1.3.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.2.1...v1.3.0) (2020-01-02)
 
 
