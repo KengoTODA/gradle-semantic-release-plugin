@@ -12,6 +12,7 @@ import {
 } from "../../src/gradle";
 
 jest.mock("signale");
+jest.setTimeout(60000);
 
 describe("Test for gradle handling", () => {
   test("getCommand() return 'gradle' when there is no gradle wrapper", async () => {
@@ -35,7 +36,7 @@ describe("Test for gradle handling", () => {
       new Signale()
     );
     expect(task).toBe("");
-  }, 10000);
+  });
   test("getTaskToPublish() return 'publish' when there is maven-publish-plugin", async () => {
     expect.assertions(1);
     const gradleProject = join(cwd(), "test/project/with-maven-publish-plugin");
@@ -45,7 +46,7 @@ describe("Test for gradle handling", () => {
       new Signale()
     );
     expect(task).toBe("publish");
-  }, 10000);
+  });
   test("getTaskToPublish() return 'uploadArchives' when there is available legacy publishing method", async () => {
     expect.assertions(1);
     const gradleProject = join(cwd(), "test/project/with-legacy-publishing");
@@ -55,7 +56,7 @@ describe("Test for gradle handling", () => {
       new Signale()
     );
     expect(task).toBe("uploadArchives");
-  }, 10000);
+  });
   test("getTaskToPublish() return 'artifactoryDeploy' when there is available artifactory-plugin", async () => {
     expect.assertions(1);
     const gradleProject = join(cwd(), "test/project/with-artifactory-plugin");
@@ -65,7 +66,7 @@ describe("Test for gradle handling", () => {
       new Signale()
     );
     expect(task).toBe("artifactoryDeploy");
-  }, 10000);
+  });
   test("getTaskToPublish() return 'publishPlugins' when there is available plugin-publish-plugin", async () => {
     expect.assertions(1);
     const gradleProject = join(
@@ -78,7 +79,7 @@ describe("Test for gradle handling", () => {
       new Signale()
     );
     expect(task).toBe("publishPlugins");
-  }, 10000);
+  });
 
   test("getVersion() returns version defined in build.gradle", async () => {
     expect.assertions(1);
