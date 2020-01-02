@@ -1,3 +1,4 @@
+import { existsSync } from "fs";
 import { join } from "path";
 import { parse, stringify } from "properties";
 import { promisify } from "util";
@@ -11,10 +12,13 @@ export async function updateVersion(
   version: string
 ): Promise<void> {
   const path = join(cwd, "gradle.properties");
-  const prop = (await parseProperties(path, { path: true })) as {
-    version: string;
-  };
-  prop.version = version;
+  let prop = { version };
+  if (existsSync(path)) {
+    prop = (await parseProperties(path, { path: true })) as {
+      version: string;
+    };
+    prop.version = version;
+  }
   await writeProperties(prop, { path });
 }
 
