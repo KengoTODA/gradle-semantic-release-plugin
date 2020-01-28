@@ -35,7 +35,7 @@
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^6.0.1",
     "@semantic-release/npm": "^6.0.0",
-    "@semantic-release/release-notes-generator": "^7.1.4",
+    "@semantic-release/release-notes-generator": "^9.0.0",
     "@types/jest": "^25.1.0",
     "@types/rimraf": "^2.0.2",
     "@types/signale": "^1.2.1",
