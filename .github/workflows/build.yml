@@ -20,12 +20,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: "11.x"
-      - name: Cache Yarn
-        id: cache-yarn
-        uses: actions/cache@v1
+      - uses: actions/cache@v1.1.0
         with:
-          path: ~/.yarn
-          key: ${{ runner.os }}-yarn-${{ matrix.node-version }}
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Cache Gradle
         id: cache-gradle
         uses: actions/cache@v1
@@ -36,10 +36,9 @@ jobs:
         run: test/project/with-artifactory-plugin/gradlew dependencies
       - name: Build
         run: |
-          yarn
-          yarn build
-          yarn test
-          yarn run semantic-release --dry-run
+          npm ci
+          npm test
+          npm run semantic-release --dry-run
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
