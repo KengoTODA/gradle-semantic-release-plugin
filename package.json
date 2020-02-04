@@ -23,7 +23,7 @@
   "scripts": {
     "build": "tsc",
     "prebuild": "tslint -p tsconfig.json",
-    "test": "jest",
+    "test": "TS_NODE_FILES=true mocha --extension ts --require ts-node/register test/src/*.test.ts",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -36,17 +36,19 @@
     "@semantic-release/github": "^7.0.0",
     "@semantic-release/npm": "^7.0.0",
     "@semantic-release/release-notes-generator": "^9.0.0",
-    "@types/jest": "^25.1.0",
+    "@types/chai": "^4.2.8",
+    "@types/mocha": "^7.0.1",
     "@types/rimraf": "^2.0.2",
     "@types/signale": "^1.2.1",
     "@types/split2": "^2.1.6",
+    "chai": "^4.2.0",
     "husky": "^4.0.0",
-    "jest": "^25.1.0",
+    "mocha": "^7.0.1",
     "prettier": "^1.16.4",
     "pretty-quick": "^2.0.0",
     "rimraf": "^3.0.0",
     "semantic-release": "^17.0.1",
-    "ts-jest": "^25.0.0",
+    "ts-node": "^8.6.2",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.3.4000"
@@ -56,16 +58,6 @@
   },
   "peerDependencies": {
     "semantic-release": "^17.0.1"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "/test/src/.*\\.tsx?$",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ]
   },
   "release": {
     "verifyConditions": [

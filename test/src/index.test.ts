@@ -1,13 +1,15 @@
+import { assert } from "chai";
+import "mocha";
 const Index = require("../../src/index");
 
 describe("index", () => {
-  test("prepare is a function", () => {
-    expect(Index.prepare).toBeInstanceOf(Function);
+  it("prepare is a function", () => {
+    assert.instanceOf(Index.prepare, Function);
   });
-  test("publish is a function", () => {
-    expect(Index.publish).toBeInstanceOf(Function);
+  it("publish is a function", () => {
+    assert.instanceOf(Index.publish, Function);
   });
-  test("verifyConditions is a function", () => {
-    expect(Index.verifyConditions).toBeInstanceOf(Function);
+  it("verifyConditions is a function", () => {
+    assert.instanceOf(Index.verifyConditions, Function);
   });
 });
