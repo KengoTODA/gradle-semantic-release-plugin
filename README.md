@@ -30,7 +30,7 @@ Refer [this sample project](https://github.com/KengoTODA/gradle-boilerplate) as 
 
 ## Configure `@semantic-release/git`
 
-This plugin updates `gradle.properties` to bump up project version, so it is recommended to let `@semantic-release/git` commits this file to Git. To realize this operation, you can configure your `package.json` like below:
+This plugin updates `gradle.properties` to bump up project version. If you want to keep the version in this file updated, configure `@semantic-release/git` to commit changes. You can configure your `package.json` like below:
 
 ```json
   "release": {
@@ -50,14 +50,14 @@ This plugin updates `gradle.properties` to bump up project version, so it is rec
 
 ## Configure your CI
 
-If your CI configuration is for java app development, then you may need to install `node` and `yarn` by your own.
+If your CI configuration is for java app development, then you may need to install `node` by your own.
 For Travis CI, it has `nvm` in the PATH so you can install them like below:
 
 ```yml
 language: java
 before_install: # or at the release stage described in the following part
-  - nvm install 8
-  - yarn install # or "npm ci"
+  - nvm install 12
+  - npm ci # or "yarn
 ```
 
 Then trigger `semantic-release` at the release stage. For now the build stage is recommended over [the travis-deploy-once](https://github.com/semantic-release/travis-deploy-once):
@@ -71,7 +71,7 @@ jobs:
         provider: script
         skip_cleanup: true
         script:
-          - yarn semantic-release # or "npm run semantic-release"
+          - npm run semantic-release # or "yarn semantic-release"
 ```
 
 # FAQ
