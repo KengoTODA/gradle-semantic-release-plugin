@@ -23,10 +23,9 @@ jobs:
         run: test/project/with-artifactory-plugin/gradlew dependencies
       - name: Build and Release
         run: |
-          yarn
-          yarn build
-          yarn test
-          yarn run semantic-release
+          npm ci
+          npm test
+          npm run semantic-release
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
