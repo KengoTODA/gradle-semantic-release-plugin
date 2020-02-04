@@ -21,8 +21,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "tsc",
-    "prebuild": "tslint -p tsconfig.json",
+    "prepack": "tsc",
     "test": "TS_NODE_FILES=true nyc mocha",
     "semantic-release": "semantic-release"
   },
@@ -51,8 +50,6 @@
     "semantic-release": "^17.0.1",
     "source-map-support": "^0.5.16",
     "ts-node": "^8.6.2",
-    "tslint": "^6.0.0",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.3.4000"
   },
   "engines": {
