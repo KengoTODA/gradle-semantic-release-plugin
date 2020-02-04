@@ -23,7 +23,7 @@
   "scripts": {
     "build": "tsc",
     "prebuild": "tslint -p tsconfig.json",
-    "test": "TS_NODE_FILES=true mocha --extension ts --require ts-node/register test/src/*.test.ts",
+    "test": "TS_NODE_FILES=true nyc mocha",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -89,5 +89,26 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
+  "mocha": {
+    "require": [
+      "ts-node/register",
+      "source-map-support/register"
+    ],
+    "recursive": true,
+    "spec": "test/src/*.test.ts"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": "src",
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
   }
 }
