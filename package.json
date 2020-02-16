@@ -53,7 +53,7 @@
     "typescript": "^3.3.4000"
   },
   "engines": {
-    "node": ">=10.16"
+    "node": ">=12.14"
   },
   "peerDependencies": {
     "semantic-release": "^17.0.1"
