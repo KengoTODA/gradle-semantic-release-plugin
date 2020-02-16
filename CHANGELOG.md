@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.3.1...v1.4.0) (2020-02-16)
+
+
+### Features
+
+* replace properties with promisified-properties module ([2f960d6](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/2f960d6fffab040af3be9f13eda2fad6d071825c))
+
 ## [1.3.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.3.0...v1.3.1) (2020-01-02)
 
 
