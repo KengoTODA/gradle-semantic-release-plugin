@@ -46,7 +46,6 @@
     "nyc": "^15.0.0",
     "prettier": "^1.16.4",
     "pretty-quick": "^2.0.0",
-    "properties": "^1.2.1",
     "rimraf": "^3.0.0",
     "semantic-release": "^17.0.1",
     "source-map-support": "^0.5.16",
