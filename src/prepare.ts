@@ -1,25 +1,20 @@
 import { existsSync } from "fs";
 import { join } from "path";
-import { parse, stringify } from "properties";
-import { promisify } from "util";
+import { parseFile, write } from "promisified-properties";
 import { IContext } from "./definition";
 import { getVersion } from "./gradle";
-const parseProperties = promisify(parse);
-const writeProperties = promisify(stringify);
 
 export async function updateVersion(
   cwd: string,
   version: string
 ): Promise<void> {
   const path = join(cwd, "gradle.properties");
-  let prop = { version };
+  let prop = new Map<string, string>();
   if (existsSync(path)) {
-    prop = (await parseProperties(path, { path: true })) as {
-      version: string;
-    };
-    prop.version = version;
+    prop = await parseFile(path);
   }
-  await writeProperties(prop, { path });
+  prop.set("version", version);
+  return write(prop, path);
 }
 
 export default async function prepare(pluginConfig: object, context: IContext) {
