@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.0...v1.4.1) (2020-02-26)
+
+
+### Bug Fixes
+
+* property value could not contain any colon ([2526ad1](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/2526ad105fcd7291b4e49ea127d4eff447e6b888))
+
 # [1.4.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.3.1...v1.4.0) (2020-02-16)
 
 
