@@ -22,7 +22,7 @@
   "private": false,
   "scripts": {
     "prepack": "tsc",
-    "test": "TS_NODE_FILES=true nyc mocha",
+    "test": "cross-env TS_NODE_FILES=true nyc mocha",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -41,6 +41,7 @@
     "@types/signale": "^1.2.1",
     "@types/split2": "^2.1.6",
     "chai": "^4.2.0",
+    "cross-env": "^7.0.0",
     "husky": "^4.0.0",
     "mocha": "^7.0.1",
     "nyc": "^15.0.0",
