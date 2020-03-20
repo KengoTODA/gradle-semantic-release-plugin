@@ -37,7 +37,7 @@
     "@semantic-release/release-notes-generator": "^9.0.0",
     "@types/chai": "^4.2.8",
     "@types/mocha": "^7.0.1",
-    "@types/rimraf": "^2.0.2",
+    "@types/rimraf": "^3.0.0",
     "@types/signale": "^1.2.1",
     "@types/split2": "^2.1.6",
     "chai": "^4.2.0",
