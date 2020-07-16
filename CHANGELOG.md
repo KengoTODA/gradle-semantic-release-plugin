@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.4...v1.4.5) (2020-07-16)
+
+
+### Bug Fixes
+
+* **deps:** bump lodash from 4.17.15 to 4.17.19 ([91a5592](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/91a55926c0626c8d1b74d1b39b62b70d0ccdf9ca))
+
 ## [1.4.4](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.3...v1.4.4) (2020-07-16)
 
 
