@@ -21,6 +21,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "all": "npm pack && pretty-quick --staged && npm test",
     "prepack": "tsc",
     "test": "cross-env TS_NODE_FILES=true nyc mocha",
     "semantic-release": "semantic-release"
