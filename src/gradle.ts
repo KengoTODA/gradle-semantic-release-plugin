@@ -16,7 +16,7 @@ const ERROR_MULTIPLE_PLUGIN = "Found multiple tasks to publish";
  */
 export function getCommand(cwd: string): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    access(join(cwd, "gradlew"), constants.F_OK, err => {
+    access(join(cwd, "gradlew"), constants.F_OK, (err) => {
       if (err) {
         if (err.code === "ENOENT") {
           resolve("gradle");
@@ -44,7 +44,7 @@ export function getTaskToPublish(
     const child = spawn(command, ["tasks", "-q"], {
       cwd,
       env,
-      stdio: ["inherit", "pipe"]
+      stdio: ["inherit", "pipe"],
     });
     if (child.stdout === null) {
       reject(new Error("Unexpected error: stdout of subprocess is null"));
@@ -96,7 +96,7 @@ export function getTaskToPublish(
         }
         resolve(task);
       });
-      child.on("error", err => {
+      child.on("error", (err) => {
         reject(err);
       });
     }
@@ -116,7 +116,7 @@ export function getVersion(
     const child = spawn(command, ["properties", "-q"], {
       cwd,
       env,
-      stdio: ["inherit", "pipe"]
+      stdio: ["inherit", "pipe"],
     });
     if (child.stdout === null) {
       reject(new Error("Unexpected error: stdout of subprocess is null"));
@@ -137,7 +137,7 @@ export function getVersion(
         }
         resolve(version);
       });
-      child.on("error", err => {
+      child.on("error", (err) => {
         reject(err);
       });
     }
@@ -168,11 +168,11 @@ export function publishArtifact(
     const options = [await task, "-q"].concat(buildOptions(env));
     logger.info(`launching child process with options: ${options.join(" ")}`);
     const child = spawn(await command, options, { cwd, env });
-    child.on("close", code => {
+    child.on("close", (code) => {
       if (code !== 0) {
         reject(`Failed to publish: Gradle failed with status code ${code}.`);
       } else {
-        resolve();
+        resolve(void 0);
       }
     });
   });
