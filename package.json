@@ -37,7 +37,7 @@
     "@types/mocha": "^8.0.0",
     "@types/rimraf": "^3.0.0",
     "@types/signale": "^1.2.1",
-    "@types/split2": "^2.1.6",
+    "@types/split2": "^3.2.0",
     "chai": "^4.2.0",
     "cross-env": "^7.0.0",
     "husky": "^6.0.0",
