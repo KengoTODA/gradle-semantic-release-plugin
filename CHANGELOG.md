@@ -1,3 +1,10 @@
+## [1.4.20](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.19...v1.4.20) (2021-06-08)
+
+
+### Bug Fixes
+
+* **deps:** bump glob-parent from 5.1.0 to 5.1.2 ([ec8f6da](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/ec8f6da7791fe34b8edeee73be494d19c4b82226))
+
 ## [1.4.19](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.18...v1.4.19) (2021-05-10)
 
 
