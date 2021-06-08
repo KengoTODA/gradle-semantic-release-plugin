@@ -1,3 +1,10 @@
+## [1.4.21](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.20...v1.4.21) (2021-06-08)
+
+
+### Bug Fixes
+
+* **deps:** bump trim-newlines from 3.0.0 to 3.0.1 ([44c7b75](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/44c7b75100062e699a83a47442b7f37d0f1a5b6a))
+
 ## [1.4.20](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.19...v1.4.20) (2021-06-08)
 
 
