@@ -1,3 +1,10 @@
+## [1.4.22](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.21...v1.4.22) (2021-06-09)
+
+
+### Bug Fixes
+
+* **deps:** bump normalize-url from 6.0.0 to 6.0.1 ([4d20de9](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/4d20de9baa6ae2de97c70ff61195024f07a581c2))
+
 ## [1.4.21](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.20...v1.4.21) (2021-06-08)
 
 
