@@ -23,8 +23,9 @@
   "scripts": {
     "all": "npm pack && pretty-quick --staged && npm test",
     "prepack": "tsc",
-    "test": "cross-env TS_NODE_FILES=true nyc mocha",
-    "semantic-release": "semantic-release"
+    "test": "jest",
+    "semantic-release": "semantic-release",
+    "prepare": "husky install"
   },
   "dependencies": {
     "promisified-properties": "^2.0.3",
@@ -33,26 +34,21 @@
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
-    "@types/chai": "^4.2.8",
-    "@types/mocha": "^8.0.0",
+    "@types/jest": "^26.0.24",
     "@types/rimraf": "^3.0.0",
     "@types/signale": "^1.2.1",
     "@types/split2": "^3.2.0",
-    "chai": "^4.2.0",
-    "cross-env": "^7.0.0",
-    "husky": "^6.0.0",
-    "mocha": "^9.0.0",
-    "nyc": "^15.0.0",
+    "husky": "^7.0.0",
+    "jest": "^27.0.6",
     "prettier": "^2.0.1",
     "pretty-quick": "^3.0.0",
     "rimraf": "^3.0.0",
     "semantic-release": "^17.0.1",
-    "source-map-support": "^0.5.16",
-    "ts-node": "^10.0.0",
+    "ts-jest": "^27.0.3",
     "typescript": "^4.0.2"
   },
   "engines": {
-    "node": ">=12.14"
+    "node": ">=14.16"
   },
   "peerDependencies": {
     "semantic-release": "^17.0.1"
@@ -82,31 +78,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
-  "mocha": {
-    "require": [
-      "ts-node/register",
-      "source-map-support/register"
-    ],
-    "recursive": true,
-    "spec": "test/src/*.test.ts"
-  },
-  "nyc": {
-    "extension": [
-      ".ts"
-    ],
-    "include": "src",
-    "exclude": [
-      "**/*.d.ts"
-    ],
-    "reporter": [
-      "html"
-    ],
-    "all": true
   }
 }
