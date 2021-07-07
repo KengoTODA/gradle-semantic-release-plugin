@@ -1,3 +1,10 @@
+## [1.4.23](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.22...v1.4.23) (2021-07-07)
+
+
+### Bug Fixes
+
+* **deps:** bump promisified-properties from 2.0.18 to 2.0.19 ([6eec755](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/6eec7556536d79d096c0e88b5206229a11db25e5))
+
 ## [1.4.22](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.21...v1.4.22) (2021-06-09)
 
 
