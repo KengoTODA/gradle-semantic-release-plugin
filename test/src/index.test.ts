@@ -1,4 +1,5 @@
 const Index = require("../../src/index");
+import { describe, expect, it } from "@jest/globals";
 
 describe("index", () => {
   it("prepare is a function", () => {

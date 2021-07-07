@@ -10,6 +10,7 @@ import {
   getVersion,
   publishArtifact,
 } from "../../src/gradle";
+import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 
 describe("Test for gradle handling", function () {
   jest.setTimeout(60000);

@@ -3,6 +3,7 @@ import { join } from "path";
 import { cwd } from "process";
 import { updateVersion } from "../../src/prepare";
 import { parseFile, write } from "promisified-properties";
+import { afterEach, beforeEach, describe, expect, it } from "@jest/globals";
 
 describe("Test for prepare step", () => {
   afterEach(async () => {
