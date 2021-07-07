@@ -3,26 +3,24 @@ import { join } from "path";
 import { cwd } from "process";
 import { sync as rmdir } from "rimraf";
 import { Signale } from "signale";
-import { expect } from "chai";
-import "mocha";
 import {
   buildOptions,
   getCommand,
   getTaskToPublish,
   getVersion,
-  publishArtifact
+  publishArtifact,
 } from "../../src/gradle";
 
-describe("Test for gradle handling", function() {
-  this.timeout(60000);
+describe("Test for gradle handling", function () {
+  jest.setTimeout(60000);
   it("getCommand() return 'gradle' when there is no gradle wrapper", async () => {
     const command = await getCommand(cwd());
-    expect(command).to.equal("gradle");
+    expect(command).toBe("gradle");
   });
   it("getCommand() can find the wrapper script", async () => {
     const gradleProject = join(cwd(), "test/project/without-plugin");
     const command = await getCommand(gradleProject);
-    expect(command).to.equal("./gradlew");
+    expect(command).toBe("./gradlew");
   });
 
   it("getTaskToPublish() return empty string when there is no task to publish", async () => {
@@ -32,7 +30,7 @@ describe("Test for gradle handling", function() {
       process.env,
       new Signale()
     );
-    expect(task).to.equal("");
+    expect(task).toBe("");
   });
   it("getTaskToPublish() return 'publish' when there is maven-publish-plugin", async () => {
     const gradleProject = join(cwd(), "test/project/with-maven-publish-plugin");
@@ -41,7 +39,7 @@ describe("Test for gradle handling", function() {
       process.env,
       new Signale()
     );
-    expect(task).to.equal("publish");
+    expect(task).toBe("publish");
   });
   it("getTaskToPublish() return 'uploadArchives' when there is available legacy publishing method", async () => {
     const gradleProject = join(cwd(), "test/project/with-legacy-publishing");
@@ -50,7 +48,7 @@ describe("Test for gradle handling", function() {
       process.env,
       new Signale()
     );
-    expect(task).to.equal("uploadArchives");
+    expect(task).toBe("uploadArchives");
   });
   it("getTaskToPublish() return 'artifactoryDeploy' when there is available artifactory-plugin", async () => {
     const gradleProject = join(cwd(), "test/project/with-artifactory-plugin");
@@ -59,7 +57,7 @@ describe("Test for gradle handling", function() {
       process.env,
       new Signale()
     );
-    expect(task).to.equal("artifactoryDeploy");
+    expect(task).toBe("artifactoryDeploy");
   });
   it("getTaskToPublish() return 'publishPlugins' when there is available plugin-publish-plugin", async () => {
     const gradleProject = join(
@@ -71,18 +69,18 @@ describe("Test for gradle handling", function() {
       process.env,
       new Signale()
     );
-    expect(task).to.equal("publishPlugins");
+    expect(task).toBe("publishPlugins");
   });
 
   it("getVersion() returns version defined in build.gradle", async () => {
     const gradleProject = join(cwd(), "test/project/without-properties-file");
     const version = await getVersion(gradleProject, process.env);
-    expect(version).to.equal("1.2.3");
+    expect(version).toBe("1.2.3");
   });
   it("getVersion() returns version defined in gradle.properties", async () => {
     const gradleProject = join(cwd(), "test/project/with-properties-file");
     const version = await getVersion(gradleProject, process.env);
-    expect(version).to.equal("0.1.2");
+    expect(version).toBe("0.1.2");
   });
 
   describe("publishArtifact()", () => {
@@ -103,15 +101,15 @@ describe("Test for gradle handling", function() {
   describe("buildOptions()", () => {
     it("returns an empty array", () => {
       const result = buildOptions({});
-      expect(result).to.have.length(0);
+      expect(result).toHaveLength(0);
     });
     it("adds project properties when specific there is envvar", () => {
       const env = process.env;
       env["GRADLE_PUBLISH_KEY"] = "my-key";
       env["GRADLE_PUBLISH_SECRET"] = "my-secret";
       const result = buildOptions(env);
-      expect(result).to.include("-Pgradle.publish.key=my-key");
-      expect(result).to.include("-Pgradle.publish.secret=my-secret");
+      expect(result).toContain("-Pgradle.publish.key=my-key");
+      expect(result).toContain("-Pgradle.publish.secret=my-secret");
     });
   });
 });
