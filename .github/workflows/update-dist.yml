@@ -1,0 +1,38 @@
+# When Dependabot updates dependency, this workflow synchronize the change
+# to the /dist dir to let users enjoy new feature without manual sync.
+name: Update the dist dir
+on:
+  pull_request_target:
+    types:
+      - labeled # for initial execution
+      - synchronize # to support `@dependabot recreate` command
+jobs:
+  run-ncc:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'dependencies')
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.PAT_TO_PUSH }}
+      - name: Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+      - name: Use Node.js v${{ steps.nvm.outputs.NVMRC }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.nvm.outputs.NVMRC }}
+          # It is not suggested to cache for the pull_request_target event
+          # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target
+      - name: Update the dist directory
+        run: |
+          npm ci
+          npm run build
+          npm run package
+          if [[ $(git status -s -- dist | wc -l) -gt 0 ]]; then
+            git add dist
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git commit -m "chore: sync the dependency update to the /dist dir"
+            git push origin HEAD
+          fi
