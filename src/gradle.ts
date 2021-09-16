@@ -62,7 +62,7 @@ export function getTaskToPublish(
           task = "artifactoryDeploy";
         } else if (line.startsWith("publish -")) {
           // Plugins Gradle Artifactory Plugin and Maven Publish Plugin are often used together
-          if (task !== "" && task !== "artifactoryDeploy") {
+          if (task !== "" && task !== "artifactoryDeploy" && task !== "publishPlugins") {
             reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
           if (task === "artifactoryDeploy") {
