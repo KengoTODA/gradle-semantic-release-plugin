@@ -72,6 +72,18 @@ describe("Test for gradle handling", function () {
     );
     expect(task).toBe("publishPlugins");
   });
+  it("getTaskToPublish() return 'publishPlugins' when there is available plugin-publish-plugin and maven-publish", async () => {
+    const gradleProject = join(
+      cwd(),
+      "test/project/with-plugin-publish-and-maven-publish"
+    );
+    const task = await getTaskToPublish(
+      gradleProject,
+      process.env,
+      new Signale()
+    );
+    expect(task).toBe("publishPlugins");
+  });
 
   it("getVersion() returns version defined in build.gradle", async () => {
     const gradleProject = join(cwd(), "test/project/without-properties-file");
