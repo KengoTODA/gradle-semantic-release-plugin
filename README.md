@@ -14,7 +14,7 @@ To apply this semantic-release plugin, you need to fulfill the following precond
 1. Your Gradle project should manage its version by `gradle.properties` (not by `build.gradle` nor `build.gradle.kts`).
 2. Your Gradle project should have an executable Gradle wrapper script at the project root directory.
 3. Your CI environment should run on Linux environment that can run `./gradlew`.
-4. Your Gradle project should use [Maven Publish Plugin](https://docs.gradle.org/current/userguide/publishing_maven.html), [Legacy publishing](https://docs.gradle.org/current/userguide/artifact_management.html) or [Gradle Artifactory Plugin](https://www.jfrog.com/confluence/display/RTF/Gradle+Artifactory+Plugin) to publish artifact.
+4. Your Gradle project should use [Maven Publish Plugin](https://docs.gradle.org/current/userguide/publishing_maven.html), [Legacy publishing](https://docs.gradle.org/current/userguide/artifact_management.html), [Gradle Artifactory Plugin](https://www.jfrog.com/confluence/display/RTF/Gradle+Artifactory+Plugin), or [Plugin Publishing Plugin](https://docs.gradle.org/current/userguide/publishing_gradle_plugins.html) to publish artifact.
 
 # Installation
 
@@ -84,4 +84,4 @@ Our plugin is a semantic-release plugin. It can work with other plugin implement
 
 ## Copyright
 
-Copyright (c) 2019 Kengo TODA
+Copyright (c) 2019-2021 Kengo TODA
