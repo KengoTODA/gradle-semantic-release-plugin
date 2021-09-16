@@ -1,3 +1,10 @@
+## [1.4.24](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.23...v1.4.24) (2021-09-16)
+
+
+### Bug Fixes
+
+* accept running build with both plugin-publish and maven-publish ([6556bb3](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/6556bb369312afa5b5943f3dcb5b5b180d5ce70d))
+
 ## [1.4.23](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.4.22...v1.4.23) (2021-07-07)
 
 
