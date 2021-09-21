@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.0",
-    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/git": "^10.0.0",
     "@types/rimraf": "^3.0.0",
     "@types/signale": "^1.2.1",
     "@types/split2": "^3.2.0",
