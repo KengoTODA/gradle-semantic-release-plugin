@@ -84,9 +84,8 @@ export function getTaskToPublish(
             reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
           task = "publishPlugins";
-        } else {
-          logger.debug(line.toString())
         }
+        logger.debug(line.toString());
       });
       child.stderr.pipe(split()).on("data", (line: string) => {
           logger.error(line.toString())
