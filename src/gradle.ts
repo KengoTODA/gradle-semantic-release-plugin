@@ -46,10 +46,13 @@ export function getTaskToPublish(
       env,
       stdio: ["inherit", "pipe"],
     });
-    if (child.stdout === null) {
-      reject(new Error("Unexpected error: stdout of subprocess is null"));
+    if (child.stdout === null || child.stderr == null) {
+      reject(
+        new Error("Unexpected error: stdout or stderr of subprocess is null")
+      );
     } else {
       let task = "";
+      child.stdout.setEncoding("utf8");
       child.stdout.pipe(split()).on("data", (line: string) => {
         if (line.startsWith("artifactoryDeploy -")) {
           // Plugins Gradle Artifactory Plugin and Maven Publish Plugin are often used together
@@ -62,7 +65,11 @@ export function getTaskToPublish(
           task = "artifactoryDeploy";
         } else if (line.startsWith("publish -")) {
           // Plugins Gradle Artifactory Plugin and Maven Publish Plugin are often used together
-          if (task !== "" && task !== "artifactoryDeploy" && task !== "publishPlugins") {
+          if (
+            task !== "" &&
+            task !== "artifactoryDeploy" &&
+            task !== "publishPlugins"
+          ) {
             reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
           if (task === "artifactoryDeploy") {
@@ -85,6 +92,11 @@ export function getTaskToPublish(
           }
           task = "publishPlugins";
         }
+        logger.debug(line);
+      });
+      child.stderr.setEncoding("utf8");
+      child.stderr.pipe(split()).on("data", (line: string) => {
+        logger.error(line);
       });
       child.on("close", (code: number) => {
         if (code !== 0) {
