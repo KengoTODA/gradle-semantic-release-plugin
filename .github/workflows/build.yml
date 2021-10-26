@@ -18,6 +18,8 @@ jobs:
         with:
           ref: ${{ steps.condval.outputs.value }}
           fetch-depth: 0
+          # Make sure the release step uses its own credentials.
+          persist-credentials: false
       - name: Resolve detached branch
         run: |
           git checkout -b detached-branch
@@ -48,5 +50,5 @@ jobs:
           npm run semantic-release
         env:
           CI: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TO_PUSH }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
