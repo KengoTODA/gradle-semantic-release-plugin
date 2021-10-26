@@ -21,7 +21,8 @@ jobs:
       - name: Resolve detached branch
         run: |
           git checkout -b detached-branch
-          git fetch origin master
+          git checkout master
+          git checkout detached-branch
         if: github.event_name == 'pull_request_target'
       - name: Read .nvmrc
         run: echo ::set-output name=NVMRC::$(cat .nvmrc)
