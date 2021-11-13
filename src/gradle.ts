@@ -180,6 +180,14 @@ export function publishArtifact(
     const options = [await task, "-q"].concat(buildOptions(env));
     logger.info(`launching child process with options: ${options.join(" ")}`);
     const child = spawn(await command, options, { cwd, env });
+    child.stdout.setEncoding("utf8");
+    child.stdout.pipe(split()).on("data", (line: string) => {
+      logger.debug(line);
+    });
+    child.stderr.setEncoding("utf8");
+    child.stderr.pipe(split()).on("data", (line: string) => {
+      logger.error(line);
+    });
     child.on("close", (code) => {
       if (code !== 0) {
         reject(`Failed to publish: Gradle failed with status code ${code}.`);
