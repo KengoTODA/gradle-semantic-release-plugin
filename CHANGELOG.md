@@ -1,3 +1,9 @@
+# [1.6.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.5.1...v1.6.0) (2021-11-13)
+
+### Features
+
+- add logging output to actual publish task ([#430](https://github.com/KengoTODA/gradle-semantic-release-plugin/issues/430)) ([68ed96c](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/68ed96c3ed631f6c4ef9e8eeabded341282c9eaa)), closes [#288](https://github.com/KengoTODA/gradle-semantic-release-plugin/issues/288)
+
 ## [1.5.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.5.0...v1.5.1) (2021-10-26)
 
 ### Bug Fixes
