@@ -183,7 +183,7 @@ export function publishArtifact(
     child.stdout.setEncoding("utf8");
     child.stdout.pipe(split()).on("data", (line: string) => {
       logger.debug(line);
-    }
+    });
     child.stderr.setEncoding("utf8");
     child.stderr.pipe(split()).on("data", (line: string) => {
       logger.error(line);
