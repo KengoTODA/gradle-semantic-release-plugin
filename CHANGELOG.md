@@ -1,3 +1,9 @@
+## [1.6.2](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.6.1...v1.6.2) (2022-01-01)
+
+### Bug Fixes
+
+- update the target to ES2019 ([74a420a](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/74a420aa052f58521ab86c40c529143fd722ae34)), closes [/github.com/microsoft/TypeScript/wiki/Node-Target-Mapping#node-12](https://github.com//github.com/microsoft/TypeScript/wiki/Node-Target-Mapping/issues/node-12)
+
 ## [1.6.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.6.0...v1.6.1) (2021-12-21)
 
 ### Bug Fixes
