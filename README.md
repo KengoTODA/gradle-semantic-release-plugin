@@ -56,7 +56,7 @@ For Travis CI, it has `nvm` in the PATH so you can install them like below:
 ```yml
 language: java
 before_install: # or at the release stage described in the following part
-  - nvm install 12
+  - nvm install 16
   - npm ci # or "yarn
 ```
 
