@@ -84,4 +84,4 @@ Our plugin is a semantic-release plugin. It can work with other plugin implement
 
 ## Copyright
 
-Copyright (c) 2019-2021 Kengo TODA
+Copyright (c) 2019-2022 Kengo TODA
