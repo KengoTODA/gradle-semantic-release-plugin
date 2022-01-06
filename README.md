@@ -16,7 +16,7 @@ To apply this semantic-release plugin, you need to fulfill the following precond
 3. Your CI environment should run on Linux environment that can run `./gradlew`.
 4. Your Gradle project should use [Maven Publish Plugin](https://docs.gradle.org/current/userguide/publishing_maven.html), [Legacy publishing](https://docs.gradle.org/current/userguide/artifact_management.html), [Gradle Artifactory Plugin](https://www.jfrog.com/confluence/display/RTF/Gradle+Artifactory+Plugin), or [Plugin Publishing Plugin](https://docs.gradle.org/current/userguide/publishing_gradle_plugins.html) to publish artifact.
 
-# Installation
+# Procedure to install
 
 ## Install semantic-release
 
@@ -24,9 +24,7 @@ Follow [install guide](https://semantic-release.gitbook.io/semantic-release/usag
 
 To manage version of toolset, we recommend you to have a `package.json` in your project root directory. Manage both of `semantic-release` and its plugins as `devDependencies`.
 
-It is also nice to have `"semantic-release": "semantic-release"` in `"scripts"` in `package.json`, then you can run `yarn semantic-release` to invoke semantic-release.
-
-Refer [this sample project](https://github.com/KengoTODA/gradle-boilerplate) as a working example.
+Refer [the spotbugs-gradle-plugin project](https://github.com/spotbugs/spotbugs-gradle-plugin) as a working example.
 
 ## Configure `@semantic-release/git`
 
@@ -46,32 +44,6 @@ This plugin updates `gradle.properties` to bump up project version. If you want 
       ]
     ]
   },
-```
-
-## Configure your CI
-
-If your CI configuration is for java app development, then you may need to install `node` by your own.
-For Travis CI, it has `nvm` in the PATH so you can install them like below:
-
-```yml
-language: java
-before_install: # or at the release stage described in the following part
-  - nvm install 16
-  - npm ci # or "yarn
-```
-
-Then trigger `semantic-release` at the release stage. For now the build stage is recommended over [the travis-deploy-once](https://github.com/semantic-release/travis-deploy-once):
-
-```yml
-jobs:
-  include:
-    - stage: release
-      script: skip
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script:
-          - npm run semantic-release # or "yarn semantic-release"
 ```
 
 # FAQ
