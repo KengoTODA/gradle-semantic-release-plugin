@@ -1,3 +1,9 @@
+## [1.6.3](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.6.2...v1.6.3) (2022-01-27)
+
+### Bug Fixes
+
+- **deps:** bump node-fetch from 2.6.2 to 2.6.7 ([40c945c](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/40c945c1759c8ed0c0243efb486ff6774d1c04f4))
+
 ## [1.6.2](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.6.1...v1.6.2) (2022-01-01)
 
 ### Bug Fixes
