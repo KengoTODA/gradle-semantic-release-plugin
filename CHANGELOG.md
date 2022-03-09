@@ -1,3 +1,9 @@
+## [1.6.7](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.6.6...v1.6.7) (2022-03-09)
+
+### Bug Fixes
+
+- support Node.JS 16.14.0 or later ([f0689d2](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/f0689d2a064826d58b7fb7b92984e8a51d60bf5f))
+
 ## [1.6.6](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.6.5...v1.6.6) (2022-03-02)
 
 ### Bug Fixes
