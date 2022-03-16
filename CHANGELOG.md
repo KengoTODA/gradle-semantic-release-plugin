@@ -1,3 +1,10 @@
+## [1.6.8](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.6.7...v1.6.8) (2022-03-16)
+
+### Bug Fixes
+
+- support NodeJS v14 explicitly ([5a48e2b](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/5a48e2b112d986f7f6d3ee36e010c9d131555fbe)), closes [/github.com/semantic-release/semantic-release/blob/2b94bb4e0967c705ab92deace342f9fecb02909d/package.json#L73](https://github.com//github.com/semantic-release/semantic-release/blob/2b94bb4e0967c705ab92deace342f9fecb02909d/package.json/issues/L73)
+- support NodeJS v17 explicitly ([979205c](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/979205c45bfc6656bcda734a2b7862c930677e12)), closes [#466](https://github.com/KengoTODA/gradle-semantic-release-plugin/issues/466)
+
 ## [1.6.7](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.6.6...v1.6.7) (2022-03-09)
 
 ### Bug Fixes
