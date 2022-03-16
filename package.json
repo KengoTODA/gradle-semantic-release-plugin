@@ -77,5 +77,11 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "funding": [
+    {
+      "type": "GitHub Sponsors",
+      "url": "https://github.com/sponsors/KengoTODA"
+    }
+  ]
 }
