@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 17]
+        node-version: [14, 16, 17]
     steps:
       - name: Decide the ref to check out
         uses: haya14busa/action-cond@v1
