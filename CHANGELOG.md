@@ -1,3 +1,9 @@
+# [1.7.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.6.8...v1.7.0) (2022-03-18)
+
+### Features
+
+- support Gradle Nexus Publish Plugin ([4e85edc](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/4e85edc5d48903cfac04ccd6a1c83b4f8e0dbe07)), closes [#391](https://github.com/KengoTODA/gradle-semantic-release-plugin/issues/391)
+
 ## [1.6.8](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.6.7...v1.6.8) (2022-03-16)
 
 ### Bug Fixes
