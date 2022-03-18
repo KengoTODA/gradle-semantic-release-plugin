@@ -27,14 +27,14 @@ describe("Test for gradle handling", function () {
   });
 
   describe("getTaskToPublish()", () => {
-    it("returns empty string when there is no task to publish", async () => {
+    it("returns empty array when there is no task to publish", async () => {
       const gradleProject = join(cwd(), "test/project/without-plugin");
       const task = await getTaskToPublish(
         gradleProject,
         process.env,
         new Signale()
       );
-      expect(task).toBe("");
+      expect(task).toEqual([]);
     });
     it("returns 'publish' when there is maven-publish-plugin", async () => {
       const gradleProject = join(
@@ -46,7 +46,7 @@ describe("Test for gradle handling", function () {
         process.env,
         new Signale()
       );
-      expect(task).toBe("publish");
+      expect(task).toEqual(["publish"]);
     });
     it("returns 'uploadArchives' when there is available legacy publishing method", async () => {
       const gradleProject = join(cwd(), "test/project/with-legacy-publishing");
@@ -55,7 +55,7 @@ describe("Test for gradle handling", function () {
         process.env,
         new Signale()
       );
-      expect(task).toBe("uploadArchives");
+      expect(task).toEqual(["uploadArchives"]);
     });
     it("returns 'artifactoryDeploy' when there is available artifactory-plugin", async () => {
       const gradleProject = join(cwd(), "test/project/with-artifactory-plugin");
@@ -64,7 +64,7 @@ describe("Test for gradle handling", function () {
         process.env,
         new Signale()
       );
-      expect(task).toBe("artifactoryDeploy");
+      expect(task).toEqual(["artifactoryDeploy"]);
     });
     it("returns 'publishPlugins' when there is available plugin-publish-plugin", async () => {
       const gradleProject = join(
@@ -76,7 +76,7 @@ describe("Test for gradle handling", function () {
         process.env,
         new Signale()
       );
-      expect(task).toBe("publishPlugins");
+      expect(task).toEqual(["publishPlugins"]);
     });
     it("returns 'publishPlugins' when there is available plugin-publish-plugin and maven-publish", async () => {
       const gradleProject = join(
@@ -88,7 +88,19 @@ describe("Test for gradle handling", function () {
         process.env,
         new Signale()
       );
-      expect(task).toBe("publishPlugins");
+      expect(task).toEqual(["publishPlugins"]);
+    });
+    it("returns 'publishToSonatype' when there is available gradle-nexus", async () => {
+      const gradleProject = join(cwd(), "test/project/with-gradle-nexus");
+      const task = await getTaskToPublish(
+        gradleProject,
+        process.env,
+        new Signale()
+      );
+      expect(task).toEqual([
+        "publishToSonatype",
+        "closeAndReleaseSonatypeStagingRepository",
+      ]);
     });
   });
 

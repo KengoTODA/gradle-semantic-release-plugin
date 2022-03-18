@@ -11,7 +11,7 @@ module.exports = async function verifyConditions(
     throw new Error(`Gradle wrapper not found at ${cwd}`);
   }
   const task = await getTaskToPublish(cwd, env as NodeJS.ProcessEnv, logger);
-  if (task === "") {
+  if (task.length === 0) {
     throw new Error("No task found that can publish artifacts");
   }
   logger.debug("Verified conditions, and found no problem");
