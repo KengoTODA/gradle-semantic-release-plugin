@@ -5,7 +5,7 @@ Yet another gradle-semantic-release-plugin that invokes Gradle wrapper script to
 [![Build](https://github.com/KengoTODA/gradle-semantic-release-plugin/actions/workflows/build.yml/badge.svg)](https://github.com/KengoTODA/gradle-semantic-release-plugin/actions/workflows/build.yml)
 [![npm](https://badgen.net/npm/v/gradle-semantic-release-plugin)](https://www.npmjs.com/package/gradle-semantic-release-plugin)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 # Precondition
 
@@ -14,7 +14,7 @@ To apply this semantic-release plugin, you need to fulfill the following precond
 1. Your Gradle project should manage its version by `gradle.properties` (not by `build.gradle` nor `build.gradle.kts`).
 2. Your Gradle project should have an executable Gradle wrapper script at the project root directory.
 3. Your CI environment should run on Linux environment that can run `./gradlew`.
-4. Your Gradle project should use [Maven Publish Plugin](https://docs.gradle.org/current/userguide/publishing_maven.html), [Legacy publishing](https://docs.gradle.org/current/userguide/artifact_management.html), [Gradle Artifactory Plugin](https://www.jfrog.com/confluence/display/RTF/Gradle+Artifactory+Plugin), or [Plugin Publishing Plugin](https://docs.gradle.org/current/userguide/publishing_gradle_plugins.html) to publish artifact.
+4. Your Gradle project should use [Maven Publish Plugin](https://docs.gradle.org/current/userguide/publishing_maven.html), [Legacy publishing](https://docs.gradle.org/current/userguide/artifact_management.html), [Gradle Artifactory Plugin](https://www.jfrog.com/confluence/display/RTF/Gradle+Artifactory+Plugin), [Gradle Nexus Publish Plugin](https://github.com/gradle-nexus/publish-plugin/), or [Plugin Publishing Plugin](https://docs.gradle.org/current/userguide/publishing_gradle_plugins.html) to publish artifact.
 
 # Procedure to install
 
