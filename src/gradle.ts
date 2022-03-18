@@ -8,6 +8,8 @@ const INFO_ARTIFACTORY = `Two publishing plugins have found: Gradle Artifactory 
 Gradle Artifactory is used for release.`;
 const INFO_PUBLISH_PLUGINS = `Two publishing plugins have found: Java Gradle Plugin and Maven Publish.
 Java Gradle Plugin is used for release.`;
+const INFO_GRADLE_NEXUS_PLUGINS = `Two publishing plugins have found: Gradle Nexus Publish Plugin and Maven Publish.
+Gradle Nexus Publish Plugin is used for release.`;
 const ERROR_MULTIPLE_PLUGIN = "Found multiple tasks to publish";
 
 /**
@@ -51,46 +53,59 @@ export function getTaskToPublish(
         new Error("Unexpected error: stdout or stderr of subprocess is null")
       );
     } else {
-      let task = "";
+      let tasks: string[] = [];
       child.stdout.setEncoding("utf8");
       child.stdout.pipe(split()).on("data", (line: string) => {
         if (line.startsWith("artifactoryDeploy -")) {
           // Plugins Gradle Artifactory Plugin and Maven Publish Plugin are often used together
-          if (task !== "" && task !== "publish") {
+          if (tasks.length !== 0 && tasks[0] !== "publish") {
             reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
-          if (task === "publish") {
+          if (tasks.length !== 0 && tasks[0] === "publish") {
             logger.info(INFO_ARTIFACTORY);
           }
-          task = "artifactoryDeploy";
+          tasks = ["artifactoryDeploy"];
         } else if (line.startsWith("publish -")) {
           // Plugins Gradle Artifactory Plugin and Maven Publish Plugin are often used together
           if (
-            task !== "" &&
-            task !== "artifactoryDeploy" &&
-            task !== "publishPlugins"
+            tasks.length !== 0 &&
+            tasks[0] !== "artifactoryDeploy" &&
+            tasks[0] !== "publishPlugins" &&
+            tasks[0] !== "publishToSonatype"
           ) {
             reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
-          if (task === "artifactoryDeploy") {
+          if (tasks.length != 0 && tasks[0] === "artifactoryDeploy") {
             logger.info(INFO_ARTIFACTORY);
-          } else if (task === "publishPlugins") {
+          } else if (tasks.length != 0 && tasks[0] === "publishPlugins") {
             logger.info(INFO_PUBLISH_PLUGINS);
+          } else if (tasks.length != 0 && tasks[0] === "publishToSonatype") {
+            logger.info(INFO_GRADLE_NEXUS_PLUGINS);
           } else {
-            task = "publish";
+            tasks = ["publish"];
           }
         } else if (line.startsWith("uploadArchives -")) {
-          if (task !== "") {
+          if (tasks.length != 0) {
             reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
-          task = "uploadArchives";
+          tasks = ["uploadArchives"];
         } else if (line.startsWith("publishPlugins -")) {
-          if (task === "publish") {
+          if (tasks.length != 0 && tasks[0] === "publish") {
             logger.info(INFO_PUBLISH_PLUGINS);
-          } else if (task !== "") {
+          } else if (tasks.length !== 0) {
             reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
-          task = "publishPlugins";
+          tasks = ["publishPlugins"];
+        } else if (
+          line.startsWith("closeAndReleaseSonatypeStagingRepository")
+        ) {
+          if (tasks.length !== 0) {
+            reject(new Error(ERROR_MULTIPLE_PLUGIN));
+          }
+          tasks = [
+            "publishToSonatype",
+            "closeAndReleaseSonatypeStagingRepository",
+          ];
         }
         logger.debug(line);
       });
@@ -106,11 +121,7 @@ export function getTaskToPublish(
             )
           );
         }
-        if (task === "") {
-          resolve([]);
-        } else {
-          resolve([task]);
-        }
+        resolve(tasks);
       });
       child.on("error", (err) => {
         reject(err);
