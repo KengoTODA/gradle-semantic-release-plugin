@@ -38,7 +38,7 @@ export function getTaskToPublish(
   cwd: string,
   env: NodeJS.ProcessEnv,
   logger: Signale
-): Promise<string> {
+): Promise<string[]> {
   return new Promise(async (resolve, reject) => {
     const command = await getCommand(cwd);
     const child = spawn(command, ["tasks", "-q"], {
@@ -106,7 +106,11 @@ export function getTaskToPublish(
             )
           );
         }
-        resolve(task);
+        if (task === "") {
+          resolve([]);
+        } else {
+          resolve([task]);
+        }
       });
       child.on("error", (err) => {
         reject(err);
@@ -176,8 +180,8 @@ export function publishArtifact(
 ) {
   return new Promise(async (resolve, reject) => {
     const command = getCommand(cwd);
-    const task = getTaskToPublish(cwd, env, logger);
-    const options = [await task, "-q"].concat(buildOptions(env));
+    const task = await getTaskToPublish(cwd, env, logger);
+    const options = [...task, "-q"].concat(buildOptions(env));
     logger.info(`launching child process with options: ${options.join(" ")}`);
     const child = spawn(await command, options, { cwd, env });
     child.stdout.setEncoding("utf8");

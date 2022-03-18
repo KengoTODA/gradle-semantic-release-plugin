@@ -1,0 +1,23 @@
+// https://github.com/gradle-nexus/publish-plugin/
+plugins {
+  id "java-library"
+  id "maven-publish"
+  id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
+}
+
+group = "com.example.library"
+version = "1.0.0"
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      from(components.java)
+    }
+  }
+}
+
+nexusPublishing {
+  repositories {
+    sonatype()
+  }
+}
