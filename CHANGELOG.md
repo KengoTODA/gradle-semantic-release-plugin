@@ -1,3 +1,9 @@
+## [1.7.2](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.1...v1.7.2) (2022-03-24)
+
+### Bug Fixes
+
+- **deps:** bump minimist from 1.2.5 to 1.2.6 ([504d855](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/504d8552008ef64a5b93bc25ba7c414383d5e77f))
+
 ## [1.7.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.0...v1.7.1) (2022-03-24)
 
 ### Bug Fixes
