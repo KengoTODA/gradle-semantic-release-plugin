@@ -37,7 +37,7 @@
     "@types/rimraf": "^3.0.0",
     "@types/signale": "^1.2.1",
     "@types/split2": "^3.2.0",
-    "husky": "^7.0.0",
+    "husky": "^8.0.1",
     "jest": "^27.0.6",
     "prettier": "^2.0.1",
     "pretty-quick": "^3.0.0",
