@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.2...v1.7.3) (2022-06-03)
+
+### Bug Fixes
+
+- **deps:** bump npm from 8.3.1 to 8.12.0 ([f79bb45](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/f79bb453b17140636da8d47a2a7bf1aced68b971))
+- **deps:** bump semver-regex from 3.1.3 to 3.1.4 ([4c80824](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/4c8082498f24ed0ed30615e4dfaf138188d96062))
+
 ## [1.7.2](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.1...v1.7.2) (2022-03-24)
 
 ### Bug Fixes
