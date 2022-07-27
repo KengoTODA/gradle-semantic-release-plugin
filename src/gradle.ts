@@ -167,6 +167,10 @@ export function getVersion(
       child.on("error", (err) => {
         reject(err);
       });
+      child.stderr &&
+        child.stderr.pipe(split()).on("data", (line: string) => {
+          console.debug(line);
+        });
     }
   });
 }
