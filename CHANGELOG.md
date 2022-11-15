@@ -1,3 +1,9 @@
+## [1.7.4](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.3...v1.7.4) (2022-11-15)
+
+### Bug Fixes
+
+- **deps:** bump minimatch from 3.0.4 to 3.1.2 ([5ab6c5b](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/5ab6c5be9fd683247698841bdb380a9ec55295f3))
+
 ## [1.7.3](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.2...v1.7.3) (2022-06-03)
 
 ### Bug Fixes
