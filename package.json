@@ -28,7 +28,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "promisified-properties": "^2.0.3",
+    "promisified-properties": "^2.0.27",
     "split2": "^4.1.0"
   },
   "devDependencies": {
