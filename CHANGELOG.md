@@ -1,3 +1,9 @@
+## [1.7.5](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.4...v1.7.5) (2023-01-08)
+
+### Bug Fixes
+
+- support semantic-release v20 that requires Node v18 ([b567057](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/b567057f8ab539525f36923656f2f92e8aeb8e2b))
+
 ## [1.7.4](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.3...v1.7.4) (2022-11-15)
 
 ### Bug Fixes
