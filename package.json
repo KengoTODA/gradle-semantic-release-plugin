@@ -34,7 +34,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.0",
     "@semantic-release/git": "^10.0.0",
-    "@types/rimraf": "^3.0.0",
+    "@types/rimraf": "^4.0.5",
     "@types/signale": "^1.2.1",
     "@types/split2": "^3.2.0",
     "husky": "^8.0.1",
