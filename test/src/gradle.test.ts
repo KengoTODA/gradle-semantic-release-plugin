@@ -93,6 +93,21 @@ describe("Test for gradle handling", function () {
         "closeAndReleaseSonatypeStagingRepository",
       ]);
     });
+    it("returns 'publishAllPublicationsToMavenCentralRepository' when there is available gradle-maven-publish-plugin", async () => {
+      const gradleProject = join(
+        cwd(),
+        "test/project/with-gradle-maven-publish-plugin"
+      );
+      const task = await getTaskToPublish(
+        gradleProject,
+        process.env,
+        new Signale()
+      );
+      expect(task).toEqual([
+        "publishAllPublicationsToMavenCentralRepository",
+        "closeAndReleaseRepository",
+      ]);
+    });
   });
 
   describe("getVersion()", () => {

@@ -101,6 +101,21 @@ export function getTaskToPublish(
             "publishToSonatype",
             "closeAndReleaseSonatypeStagingRepository",
           ];
+        } else if (
+          line.startsWith("publishAllPublicationsToMavenCentralRepository")
+        ) {
+          if (tasks.length !== 0 && tasks[0] === "publish") {
+            tasks = [
+              "publishAllPublicationsToMavenCentralRepository",
+              "closeAndReleaseRepository",
+            ];
+          }
+          if (
+            tasks.length !== 0 &&
+            tasks[0] !== "publishAllPublicationsToMavenCentralRepository"
+          ) {
+            reject(new Error(ERROR_MULTIPLE_PLUGIN));
+          }
         }
         logger.debug(line);
       });

@@ -1,0 +1,9 @@
+// https://github.com/vanniktech/gradle-maven-publish-plugin
+plugins {
+  id "java-library"
+  id "com.vanniktech.maven.publish" version "0.24.0"
+}
+
+mavenPublishing {
+  publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
+}
