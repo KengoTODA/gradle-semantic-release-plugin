@@ -48,15 +48,6 @@ describe("Test for gradle handling", function () {
       );
       expect(task).toEqual(["publish"]);
     });
-    it("returns 'uploadArchives' when there is available legacy publishing method", async () => {
-      const gradleProject = join(cwd(), "test/project/with-legacy-publishing");
-      const task = await getTaskToPublish(
-        gradleProject,
-        process.env,
-        new Signale()
-      );
-      expect(task).toEqual(["uploadArchives"]);
-    });
     it("returns 'artifactoryDeploy' when there is available artifactory-plugin", async () => {
       const gradleProject = join(cwd(), "test/project/with-artifactory-plugin");
       const task = await getTaskToPublish(

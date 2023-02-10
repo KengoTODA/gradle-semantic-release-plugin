@@ -84,11 +84,6 @@ export function getTaskToPublish(
           } else {
             tasks = ["publish"];
           }
-        } else if (line.startsWith("uploadArchives -")) {
-          if (tasks.length != 0) {
-            reject(new Error(ERROR_MULTIPLE_PLUGIN));
-          }
-          tasks = ["uploadArchives"];
         } else if (line.startsWith("publishPlugins -")) {
           if (tasks.length != 0 && tasks[0] === "publish") {
             logger.info(INFO_PUBLISH_PLUGINS);
