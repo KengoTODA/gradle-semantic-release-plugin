@@ -38,3 +38,25 @@ describe("Test for prepare step without gradle.properties", () => {
     });
   });
 });
+
+describe("Test for prepare step with gradle-maven-publish-plugin", () => {
+  afterEach(async () => {
+    const gradleProject = join(
+      cwd(),
+      "test/project/with-gradle-maven-publish-plugin"
+    );
+    const path = join(gradleProject, "gradle.properties");
+    return write(new Map([["VERSION_NAME", "0.1.2"]]), path);
+  });
+  it("updateVersion() will update version in gradle.properties", async () => {
+    const gradleProject = join(
+      cwd(),
+      "test/project/with-gradle-maven-publish-plugin"
+    );
+    await updateVersion(gradleProject, "2.3.4");
+    const path = join(gradleProject, "gradle.properties");
+    return parseFile(path).then((updated) => {
+      expect(updated.get("VERSION_NAME")).toBe("2.3.4");
+    });
+  });
+});

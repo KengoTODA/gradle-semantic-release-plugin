@@ -4,17 +4,28 @@ import { parseFile, write } from "promisified-properties";
 import { IContext } from "./definition";
 import { getVersion } from "./gradle";
 
+const VERSION_PROPS = ["version", "VERSION_NAME"];
+
 export async function updateVersion(
   cwd: string,
   version: string
 ): Promise<void> {
   const path = join(cwd, "gradle.properties");
-  let prop = new Map<string, string>();
+  var foundProp = false;
+  let props = new Map<string, string>();
   if (existsSync(path)) {
-    prop = await parseFile(path);
+    props = await parseFile(path);
   }
-  prop.set("version", version);
-  return write(prop, path);
+  for (const prop of VERSION_PROPS) {
+    if (props.has(prop)) {
+      foundProp = true;
+      props.set(prop, version);
+    }
+  }
+  if (!foundProp) {
+    props.set("version", version);
+  }
+  return write(props, path);
 }
 
 export default async function prepare(pluginConfig: object, context: IContext) {
