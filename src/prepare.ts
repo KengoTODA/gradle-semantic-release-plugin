@@ -4,7 +4,7 @@ import { parseFile, write } from "promisified-properties";
 import { IContext } from "./definition";
 import { getVersion } from "./gradle";
 
-const VERSION_PROPS = ["version", "VERSION_NAME"];
+export const VERSION_PROPS = ["version", "VERSION_NAME"];
 
 export async function updateVersion(
   cwd: string,

@@ -2,6 +2,7 @@ import { spawn } from "child_process";
 import { access, constants } from "fs";
 import { join } from "path";
 import { Signale } from "signale";
+import { VERSION_PROPS } from "./prepare";
 import split = require("split2");
 
 const INFO_ARTIFACTORY = `Two publishing plugins have found: Gradle Artifactory and Maven Publish.
@@ -160,8 +161,13 @@ export function getVersion(
     } else {
       let version = "";
       child.stdout.pipe(split()).on("data", (line: string) => {
-        if (line.startsWith("version:")) {
-          version = line.substring("version:".length).trim();
+        if (!version) {
+          for (const prop of VERSION_PROPS) {
+            if (line.startsWith(`${prop}:`)) {
+              version = line.substring(`${prop}:`.length).trim();
+              break;
+            }
+          }
         }
       });
       child.on("close", (code: number) => {

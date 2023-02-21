@@ -121,6 +121,14 @@ describe("Test for gradle handling", function () {
       const version = await getVersion(gradleProject, process.env);
       expect(version).toBe("0.1.2");
     });
+    it("returns VERSION_NAME defined in gradle.properties", async () => {
+      const gradleProject = join(
+        cwd(),
+        "test/project/with-gradle-maven-publish-plugin"
+      );
+      const version = await getVersion(gradleProject, process.env);
+      expect(version).toBe("0.1.2");
+    });
   });
 
   describe("publishArtifact()", () => {
