@@ -1,3 +1,9 @@
+## [1.7.7](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.6...v1.7.7) (2023-08-04)
+
+### Bug Fixes
+
+- **deps:** bump split2 from 4.1.0 to 4.2.0 ([6671186](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/667118601815dc691ff91f7078172e12fe820791))
+
 ## [1.7.6](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.5...v1.7.6) (2023-01-08)
 
 ### Bug Fixes
