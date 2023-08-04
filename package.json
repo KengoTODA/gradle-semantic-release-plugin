@@ -39,7 +39,7 @@
     "@types/split2": "^3.2.0",
     "husky": "^8.0.1",
     "jest": "^27.0.6",
-    "prettier": "^2.0.1",
+    "prettier": "^3.0.1",
     "pretty-quick": "^3.0.0",
     "rimraf": "^5.0.1",
     "semantic-release": "^21.0.2",
