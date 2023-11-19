@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.7...v1.8.0) (2023-11-19)
+
+
+### Features
+
+* support semantic-release v22 ([#561](https://github.com/KengoTODA/gradle-semantic-release-plugin/issues/561)) ([4e826e1](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/4e826e14b927d3e012be40ac2708a5f530a57da2))
+
 ## [1.7.7](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.6...v1.7.7) (2023-08-04)
 
 ### Bug Fixes
