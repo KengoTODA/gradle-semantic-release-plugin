@@ -3,7 +3,7 @@ import { getCommand, getTaskToPublish } from "./gradle";
 
 module.exports = async function verifyConditions(
   pluginConfig: object,
-  context: IContext
+  context: IContext,
 ) {
   const { cwd, env, logger } = context;
   const command = await getCommand(cwd);
