@@ -47,7 +47,7 @@ jobs:
           npm ci
           npm test
       - name: Run semantic-release
-        if: matrix.node-version == 20
+        if: matrix.node-version == 18
         run: |
           npm run semantic-release
         env:
