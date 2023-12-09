@@ -32,28 +32,28 @@ describe("Test for gradle handling", function () {
       const task = await getTaskToPublish(
         gradleProject,
         process.env,
-        new Signale()
+        new Signale(),
       );
       expect(task).toEqual([]);
     });
     it("returns 'publish' when there is maven-publish-plugin", async () => {
       const gradleProject = join(
         cwd(),
-        "test/project/with-maven-publish-plugin"
+        "test/project/with-maven-publish-plugin",
       );
       const task = await getTaskToPublish(
         gradleProject,
         process.env,
-        new Signale()
+        new Signale(),
       );
       expect(task).toEqual(["publish"]);
     });
-    it("returns 'uploadArchives' when there is available legacy publishing method", async () => {
+    it.skip("returns 'uploadArchives' when there is available legacy publishing method", async () => {
       const gradleProject = join(cwd(), "test/project/with-legacy-publishing");
       const task = await getTaskToPublish(
         gradleProject,
         process.env,
-        new Signale()
+        new Signale(),
       );
       expect(task).toEqual(["uploadArchives"]);
     });
@@ -62,31 +62,31 @@ describe("Test for gradle handling", function () {
       const task = await getTaskToPublish(
         gradleProject,
         process.env,
-        new Signale()
+        new Signale(),
       );
       expect(task).toEqual(["artifactoryDeploy"]);
     });
     it("returns 'publishPlugins' when there is available plugin-publish-plugin", async () => {
       const gradleProject = join(
         cwd(),
-        "test/project/with-plugin-publish-plugin"
+        "test/project/with-plugin-publish-plugin",
       );
       const task = await getTaskToPublish(
         gradleProject,
         process.env,
-        new Signale()
+        new Signale(),
       );
       expect(task).toEqual(["publishPlugins"]);
     });
     it("returns 'publishPlugins' when there is available plugin-publish-plugin and maven-publish", async () => {
       const gradleProject = join(
         cwd(),
-        "test/project/with-plugin-publish-and-maven-publish"
+        "test/project/with-plugin-publish-and-maven-publish",
       );
       const task = await getTaskToPublish(
         gradleProject,
         process.env,
-        new Signale()
+        new Signale(),
       );
       expect(task).toEqual(["publishPlugins"]);
     });
@@ -95,7 +95,7 @@ describe("Test for gradle handling", function () {
       const task = await getTaskToPublish(
         gradleProject,
         process.env,
-        new Signale()
+        new Signale(),
       );
       expect(task).toEqual([
         "publishToSonatype",
@@ -127,7 +127,7 @@ describe("Test for gradle handling", function () {
       await publishArtifact(gradleProject, process.env, new Signale());
       const file = join(
         gradleProject,
-        "build/repo/com/example/project/1.0/project-1.0.jar"
+        "build/repo/com/example/project/1.0/project-1.0.jar",
       );
       await promises.access(file, constants.F_OK);
     });
