@@ -48,8 +48,8 @@ describe("Test for prepare step without gradle.properties", () => {
     await updateVersion(gradleProject, "2.3.4");
     const path = join(gradleProject, "gradle.properties");
     return parseFile(path).then((updated) => {
-      expect(updated["key"]).toBe("version");
-      expect(updated["value"]).toBe("2.3.4");
+      expect((updated[0] as Entry).key).toBe("version");
+      expect((updated[0] as Entry).value).toBe("2.3.4");
     });
   });
 });
