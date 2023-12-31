@@ -22,7 +22,7 @@ export async function updateVersion(
     }
     return write(prop, path);
   } else {
-    write([{ key: "version", value: version }], path);
+    return write([{ key: "version", value: version }], path);
   }
 }
 
