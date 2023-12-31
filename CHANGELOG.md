@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.8.0...v1.9.0) (2023-12-31)
+
+
+### Features
+
+* preserve comments in properties file ([0bbb179](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/0bbb1797e03467f77cfc842176c3c47f91aa2c91)), closes [#569](https://github.com/KengoTODA/gradle-semantic-release-plugin/issues/569)
+
 # [1.8.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.7.7...v1.8.0) (2023-11-19)
 
 
