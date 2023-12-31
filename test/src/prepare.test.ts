@@ -4,19 +4,33 @@ import { cwd } from "process";
 import { updateVersion } from "../../src/prepare";
 import { parseFile, write } from "promisified-properties";
 import { afterEach, beforeEach, describe, expect, it } from "@jest/globals";
+import { Comment, Entry } from "promisified-properties/lib/types";
 
 describe("Test for prepare step", () => {
   afterEach(async () => {
     const gradleProject = join(cwd(), "test/project/with-properties-file");
     const path = join(gradleProject, "gradle.properties");
-    return write(new Map([["version", "0.1.2"]]), path);
+    return write(
+      [
+        {
+          text: "# version will be bumped by gradle-semantic-release-plugin automatically",
+        },
+        { key: "version", value: "0.1.2" },
+      ],
+      path,
+    );
   });
   it("updateVersion() will update version in gradle.properties", async () => {
     const gradleProject = join(cwd(), "test/project/with-properties-file");
     await updateVersion(gradleProject, "2.3.4");
     const path = join(gradleProject, "gradle.properties");
     return parseFile(path).then((updated) => {
-      expect(updated.get("version")).toBe("2.3.4");
+      expect(updated).toHaveLength(2);
+      expect((updated[0] as Comment).text).toBe(
+        "# version will be bumped by gradle-semantic-release-plugin automatically",
+      );
+      expect((updated[1] as Entry).key).toBe("version");
+      expect((updated[1] as Entry).value).toBe("2.3.4");
     });
   });
 });
@@ -34,7 +48,8 @@ describe("Test for prepare step without gradle.properties", () => {
     await updateVersion(gradleProject, "2.3.4");
     const path = join(gradleProject, "gradle.properties");
     return parseFile(path).then((updated) => {
-      expect(updated.get("version")).toBe("2.3.4");
+      expect(updated["key"]).toBe("version");
+      expect(updated["value"]).toBe("2.3.4");
     });
   });
 });
