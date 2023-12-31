@@ -3,18 +3,27 @@ import { join } from "path";
 import { parseFile, write } from "promisified-properties";
 import { IContext } from "./definition";
 import { getVersion } from "./gradle";
+import { Entry } from "promisified-properties/lib/types";
 
 export async function updateVersion(
   cwd: string,
   version: string,
 ): Promise<void> {
   const path = join(cwd, "gradle.properties");
-  let prop = new Map<string, string>();
   if (existsSync(path)) {
-    prop = await parseFile(path);
+    const prop = await parseFile(path);
+    const index = prop.findIndex(
+      (entry) => "key" in entry && entry.key == "version",
+    );
+    if (index < 0) {
+      prop.push({ key: "version", value: version });
+    } else {
+      (prop[index] as Entry).value = version;
+    }
+    return write(prop, path);
+  } else {
+    write([{ key: "version", value: version }], path);
   }
-  prop.set("version", version);
-  return write(prop, path);
 }
 
 export default async function prepare(pluginConfig: object, context: IContext) {
