@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18, 20]
+        node-version: [20, 21]
     steps:
       - name: Decide the ref to check out
         uses: haya14busa/action-cond@v1
@@ -47,7 +47,7 @@ jobs:
           npm ci
           npm test
       - name: Run semantic-release
-        if: matrix.node-version == 18
+        if: matrix.node-version == 20
         run: |
           npm run semantic-release
         env:
