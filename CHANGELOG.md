@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.9.0...v1.9.1) (2024-01-20)
+
+
+### Bug Fixes
+
+* bump semantic-release from 22.0.12 to 23.0.0, and drop support for node v18 ([#573](https://github.com/KengoTODA/gradle-semantic-release-plugin/issues/573)) ([562c628](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/562c6285a9b2448fc7aaf713739b0cf06c3de4de))
+
 # [1.9.0](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.8.0...v1.9.0) (2023-12-31)
 
 
