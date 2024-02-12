@@ -61,16 +61,16 @@ Possible usage in `build.gradle.kts`
 
 ```kotlin
 publishing {
-    repositories {
-        maven {
-            name = "OrgLibraryRepository"
-            url = uri("https://maven.pkg.github.com/org/repo-name")
-            credentials(PasswordCredentials::class) {
-                username = "gradle.publish.key"
-                password = "gradle.publish.secret"
-            }
-        }
-    }
+  repositories {
+      maven {
+          name = "OrgRepo"
+          url = uri("https://maven.pkg.github.com/org/repo")
+          credentials {
+              username = project.properties["gradle.publish.key"].toString()
+              password = project.properties["gradle.publish.secret"].toString()
+          }
+      }
+  }
 }
 ```
 
