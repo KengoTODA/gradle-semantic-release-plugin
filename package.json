@@ -25,7 +25,7 @@
     "prepack": "tsc",
     "test": "jest",
     "semantic-release": "semantic-release",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "promisified-properties": "^3.0.0",
