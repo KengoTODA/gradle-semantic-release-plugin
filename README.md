@@ -46,6 +46,34 @@ This plugin updates `gradle.properties` to bump up project version. If you want 
   },
 ```
 
+# Gradle Properties
+
+## Publish Properties
+
+Users can specify an API key and secret by supplying the following environment variables:
+
+1. `GRADLE_PUBLISH_KEY=my-key`
+    - This will get translated to `-Pgradle.publish.key=my-key` 
+2. `GRADLE_PUBLISH_SECRET=my-secret`
+    - This will get translated to `-Pgradle.publish.secret=my-secret`
+
+Possible usage in `build.gradle.kts`
+
+```kotlin
+publishing {
+  repositories {
+      maven {
+          name = "OrgRepo"
+          url = uri("https://maven.pkg.github.com/org/repo")
+          credentials {
+              username = project.properties["gradle.publish.key"].toString()
+              password = project.properties["gradle.publish.secret"].toString()
+          }
+      }
+  }
+}
+```
+
 # FAQ
 
 ## How it's different with the [@tschulte/gradle-semantic-release-plugin](https://github.com/tschulte/gradle-semantic-release-plugin)?
