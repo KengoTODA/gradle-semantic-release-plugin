@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.9.1...v1.9.2) (2024-06-05)
+
+
+### Bug Fixes
+
+* support semantic-release v24 ([7b23423](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/7b23423bad1c24bbf0faa3ea3aa50c07920c3744))
+
 ## [1.9.1](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.9.0...v1.9.1) (2024-01-20)
 
 
