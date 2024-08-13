@@ -180,6 +180,9 @@ export function buildOptions(env: NodeJS.ProcessEnv): string[] {
   if (env["GRADLE_PUBLISH_SECRET"]) {
     options.push(`-Pgradle.publish.secret=${env["GRADLE_PUBLISH_SECRET"]}`);
   }
+  if (env["GRADLE_PUBLISH_URL"]) {
+    options.push(`-Pgradle.publish.url=${env["GRADLE_PUBLISH_URL"]}`);
+  }
   /* tslint:enable:no-string-literal */
   return options;
 }

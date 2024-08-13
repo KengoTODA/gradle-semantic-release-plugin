@@ -141,6 +141,7 @@ describe("Test for gradle handling", function () {
       const env = process.env;
       env["GRADLE_PUBLISH_KEY"] = "my-key";
       env["GRADLE_PUBLISH_SECRET"] = "my-secret";
+      env["GRADLE_PUBLISH_URL"] = "my-url";
       const result = buildOptions(env);
       expect(result).toContain("-Pgradle.publish.key=my-key");
       expect(result).toContain("-Pgradle.publish.secret=my-secret");

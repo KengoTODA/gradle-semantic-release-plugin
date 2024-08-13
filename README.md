@@ -56,7 +56,8 @@ Users can specify an API key and secret by supplying the following environment v
     - This will get translated to `-Pgradle.publish.key=my-key` 
 2. `GRADLE_PUBLISH_SECRET=my-secret`
     - This will get translated to `-Pgradle.publish.secret=my-secret`
-
+3. `GRADLE_PUBLISH_URL=my-url`
+    - This will get translated to `-Pgradle.publish.url=my-url`
 Possible usage in `build.gradle.kts`
 
 ```kotlin
