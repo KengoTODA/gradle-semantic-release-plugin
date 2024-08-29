@@ -36,7 +36,7 @@ export function getCommand(cwd: string): Promise<string> {
  * @param {string} cwd the path of current working directory
  * @return A promise that resolves name of task to publish artifact
  */
-export function getTaskToPublish(
+export function autoDetectPublicationTask(
   cwd: string,
   env: NodeJS.ProcessEnv,
   logger: Signale,
@@ -186,12 +186,12 @@ export function buildOptions(env: NodeJS.ProcessEnv): string[] {
 
 export function publishArtifact(
   cwd: string,
+  task: string[],
   env: NodeJS.ProcessEnv,
   logger: Signale,
 ) {
   return new Promise(async (resolve, reject) => {
     const command = getCommand(cwd);
-    const task = await getTaskToPublish(cwd, env, logger);
     const options = [...task, "-q"].concat(buildOptions(env));
     logger.info(`launching child process with options: ${options.join(" ")}`);
     const child = spawn(await command, options, { cwd, env });

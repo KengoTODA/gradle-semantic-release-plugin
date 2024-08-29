@@ -4,9 +4,9 @@ import { cwd } from "process";
 import { sync as rmdir } from "rimraf";
 import { Signale } from "signale";
 import {
+  autoDetectPublicationTask,
   buildOptions,
   getCommand,
-  getTaskToPublish,
   getVersion,
   publishArtifact,
 } from "../../src/gradle";
@@ -26,10 +26,10 @@ describe("Test for gradle handling", function () {
     });
   });
 
-  describe("getTaskToPublish()", () => {
+  describe("autoDetectPublicationTask()", () => {
     it("returns empty array when there is no task to publish", async () => {
       const gradleProject = join(cwd(), "test/project/without-plugin");
-      const task = await getTaskToPublish(
+      const task = await autoDetectPublicationTask(
         gradleProject,
         process.env,
         new Signale(),
@@ -41,7 +41,7 @@ describe("Test for gradle handling", function () {
         cwd(),
         "test/project/with-maven-publish-plugin",
       );
-      const task = await getTaskToPublish(
+      const task = await autoDetectPublicationTask(
         gradleProject,
         process.env,
         new Signale(),
@@ -50,7 +50,7 @@ describe("Test for gradle handling", function () {
     });
     it.skip("returns 'uploadArchives' when there is available legacy publishing method", async () => {
       const gradleProject = join(cwd(), "test/project/with-legacy-publishing");
-      const task = await getTaskToPublish(
+      const task = await autoDetectPublicationTask(
         gradleProject,
         process.env,
         new Signale(),
@@ -59,7 +59,7 @@ describe("Test for gradle handling", function () {
     });
     it("returns 'artifactoryDeploy' when there is available artifactory-plugin", async () => {
       const gradleProject = join(cwd(), "test/project/with-artifactory-plugin");
-      const task = await getTaskToPublish(
+      const task = await autoDetectPublicationTask(
         gradleProject,
         process.env,
         new Signale(),
@@ -71,7 +71,7 @@ describe("Test for gradle handling", function () {
         cwd(),
         "test/project/with-plugin-publish-plugin",
       );
-      const task = await getTaskToPublish(
+      const task = await autoDetectPublicationTask(
         gradleProject,
         process.env,
         new Signale(),
@@ -83,7 +83,7 @@ describe("Test for gradle handling", function () {
         cwd(),
         "test/project/with-plugin-publish-and-maven-publish",
       );
-      const task = await getTaskToPublish(
+      const task = await autoDetectPublicationTask(
         gradleProject,
         process.env,
         new Signale(),
@@ -92,7 +92,7 @@ describe("Test for gradle handling", function () {
     });
     it("returns 'publishToSonatype' when there is available gradle-nexus", async () => {
       const gradleProject = join(cwd(), "test/project/with-gradle-nexus");
-      const task = await getTaskToPublish(
+      const task = await autoDetectPublicationTask(
         gradleProject,
         process.env,
         new Signale(),
@@ -124,7 +124,8 @@ describe("Test for gradle handling", function () {
 
     it("runs 'publish' task", async () => {
       const gradleProject = join(cwd(), "test/project/with-publish");
-      await publishArtifact(gradleProject, process.env, new Signale());
+      const task = ["publish"];
+      await publishArtifact(gradleProject, task, process.env, new Signale());
       const file = join(
         gradleProject,
         "build/repo/com/example/project/1.0/project-1.0.jar",
