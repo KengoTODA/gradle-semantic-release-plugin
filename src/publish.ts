@@ -5,6 +5,8 @@ module.exports = async function publish(
   pluginConfig: object,
   context: IContext,
 ) {
-  const { cwd, env, logger } = context;
-  await publishArtifact(cwd, env as NodeJS.ProcessEnv, logger);
+  if (pluginConfig.gradlePublish !== false) {
+    const { cwd, env, logger } = context;
+    await publishArtifact(cwd, env as NodeJS.ProcessEnv, logger);
+  }
 };
