@@ -1,8 +1,8 @@
-import { IContext } from "./definition";
+import { IContext, Options } from "./definition";
 import { publishArtifact } from "./gradle";
 
 module.exports = async function publish(
-  pluginConfig: object,
+  pluginConfig: Options,
   context: IContext,
 ) {
   if (pluginConfig.gradlePublish !== false) {
