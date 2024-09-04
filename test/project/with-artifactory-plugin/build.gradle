@@ -1,6 +1,6 @@
 // https://www.jfrog.com/confluence/display/RTF/Gradle+Artifactory+Plugin
 plugins {
-    id "com.jfrog.artifactory" version "4.9.6"
+    id "com.jfrog.artifactory" version "5.2.5"
 }
 
 apply plugin: 'maven-publish'
