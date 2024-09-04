@@ -57,14 +57,14 @@ describe("Test for gradle handling", function () {
       );
       expect(task).toEqual(["uploadArchives"]);
     });
-    it("returns 'artifactoryDeploy' when there is available artifactory-plugin", async () => {
+    it("returns 'artifactoryPublish' when there is available artifactory-plugin", async () => {
       const gradleProject = join(cwd(), "test/project/with-artifactory-plugin");
       const task = await getTaskToPublish(
         gradleProject,
         process.env,
         new Signale(),
       );
-      expect(task).toEqual(["artifactoryDeploy"]);
+      expect(task).toEqual(["artifactoryPublish"]);
     });
     it("returns 'publishPlugins' when there is available plugin-publish-plugin", async () => {
       const gradleProject = join(

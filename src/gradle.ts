@@ -65,17 +65,27 @@ export function getTaskToPublish(
             logger.info(INFO_ARTIFACTORY);
           }
           tasks = ["artifactoryDeploy"];
+        } else if (line.startsWith("artifactoryPublish -")) {
+          // Plugins Gradle Artifactory Plugin and Maven Publish Plugin are often used together
+          if (tasks.length !== 0 && tasks[0] !== "publish") {
+            reject(new Error(ERROR_MULTIPLE_PLUGIN));
+          }
+          if (tasks.length !== 0 && tasks[0] === "publish") {
+            logger.info(INFO_ARTIFACTORY);
+          }
+          tasks = ["artifactoryPublish"];
         } else if (line.startsWith("publish -")) {
           // Plugins Gradle Artifactory Plugin and Maven Publish Plugin are often used together
           if (
             tasks.length !== 0 &&
             tasks[0] !== "artifactoryDeploy" &&
+            tasks[0] !== "artifactoryPublish" &&
             tasks[0] !== "publishPlugins" &&
             tasks[0] !== "publishToSonatype"
           ) {
             reject(new Error(ERROR_MULTIPLE_PLUGIN));
           }
-          if (tasks.length != 0 && tasks[0] === "artifactoryDeploy") {
+          if (tasks.length != 0 && (tasks[0] === "artifactoryDeploy" || tasks[0] === "artifactoryPublish")) {
             logger.info(INFO_ARTIFACTORY);
           } else if (tasks.length != 0 && tasks[0] === "publishPlugins") {
             logger.info(INFO_PUBLISH_PLUGINS);
