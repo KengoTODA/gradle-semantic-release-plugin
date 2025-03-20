@@ -25,7 +25,9 @@ jobs:
           java-version: "21"
           distribution: "temurin"
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          dependency-graph: generate-and-submit
       - name: Download Gradle
         run: |
           cd test/project/with-artifactory-plugin
