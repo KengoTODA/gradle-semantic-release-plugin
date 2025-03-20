@@ -8,25 +8,12 @@ jobs:
     strategy:
       matrix:
         node-version: [20, 22]
+    permissions:
+      contents: write
     steps:
-      - name: Decide the ref to check out
-        uses: haya14busa/action-cond@v1
-        id: condval
-        with:
-          cond: ${{ github.event_name == 'pull_request_target' }}
-          if_true: refs/pull/${{ github.event.pull_request.number }}/merge
-          if_false: ${{ github.ref }}
       - uses: actions/checkout@v4
         with:
-          ref: ${{ steps.condval.outputs.value }}
           fetch-depth: 0
-          # Make sure the release step uses its own credentials.
-          persist-credentials: false
-      - name: Resolve detached branch
-        run: |
-          git checkout -b detached-branch
-          git branch --track master origin/master
-        if: github.event_name == 'pull_request_target'
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -52,5 +39,5 @@ jobs:
         run: |
           npm run semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TO_PUSH }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
