@@ -46,6 +46,24 @@ This plugin updates `gradle.properties` to bump up project version. If you want 
   },
 ```
 
+## Configure `gradle-semantic-release-plugin`
+
+The plugin offers some configuration options to customize its default behavior. You can configure your `package.json` like below:
+
+```json
+"release": {
+  "plugins": [
+    [
+      "gradle-semantic-release-plugin",
+      {
+        "skipPublishing": true, // Decide whether the publication task should run during the execution
+        "publicationTask": "jib" // Configure a custom publication task
+      }
+    ]
+  ]
+},
+```
+
 # Gradle Properties
 
 ## Publish Properties
