@@ -7,7 +7,8 @@
       "automerge": true
     }
   ],
+  "minimumReleaseAge": "3 days",
   "extends": [
-    "config:recommended"
+    "config:best-practices"
   ]
 }
