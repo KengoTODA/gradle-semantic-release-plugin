@@ -32,18 +32,18 @@
     "split2": "^4.1.0"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^6.0.0",
-    "@semantic-release/git": "^10.0.0",
-    "@types/signale": "^1.2.1",
-    "@types/split2": "^4.2.0",
-    "husky": "^9.0.11",
-    "jest": "^30.0.0",
-    "lint-staged": "^16.0.0",
-    "prettier": "^3.0.1",
-    "rimraf": "^6.0.1",
-    "semantic-release": "^24.0.0",
-    "ts-jest": "^29.1.1",
-    "typescript": "^5.3.3"
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "@types/signale": "1.4.7",
+    "@types/split2": "4.2.3",
+    "husky": "9.1.7",
+    "jest": "30.2.0",
+    "lint-staged": "16.2.2",
+    "prettier": "3.6.2",
+    "rimraf": "6.0.1",
+    "semantic-release": "24.2.9",
+    "ts-jest": "29.4.4",
+    "typescript": "5.9.2"
   },
   "engines": {
     "node": ">=18"
