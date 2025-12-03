@@ -1,3 +1,10 @@
+## [1.10.3](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.2...v1.10.3) (2025-12-03)
+
+
+### Bug Fixes
+
+* **ci:** publish package with Trusted Publisher ([715c08c](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/715c08c6e15b1a6ffa5da1c0d7262f5319fbf38d))
+
 ## [1.10.2](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.1...v1.10.2) (2025-11-30)
 
 
