@@ -46,6 +46,12 @@ This plugin updates `gradle.properties` to bump up project version. If you want 
   },
 ```
 
+### Options
+
+| Options      | Description       | Default                  |
+| ------------ | ----------------- | ------------------------ |
+| `gradlePublish` | Whether to publish the `gradle` package to the registry. If `false` the `gradle.properties` version will still be updated. | `true` |
+
 # Gradle Properties
 
 ## Publish Properties
