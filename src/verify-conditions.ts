@@ -1,8 +1,9 @@
-import { IContext } from "./definition";
-import { getCommand, getTaskToPublish } from "./gradle";
+import { getTaskToPublish } from "./config";
+import { IContext, PluginConfig } from "./definition";
+import { getCommand } from "./gradle";
 
 module.exports = async function verifyConditions(
-  pluginConfig: object,
+  pluginConfig: PluginConfig,
   context: IContext,
 ) {
   const { cwd, env, logger } = context;
@@ -10,9 +11,17 @@ module.exports = async function verifyConditions(
   if (command !== "./gradlew") {
     throw new Error(`Gradle wrapper not found at ${cwd}`);
   }
-  const task = await getTaskToPublish(cwd, env as NodeJS.ProcessEnv, logger);
-  if (task.length === 0) {
-    throw new Error("No task found that can publish artifacts");
+
+  if (!pluginConfig.skipPublishing) {
+    const task = await getTaskToPublish(
+      pluginConfig,
+      cwd,
+      env as NodeJS.ProcessEnv,
+      logger,
+    );
+    if (task.length === 0) {
+      throw new Error("No task found that can publish artifacts");
+    }
   }
   logger.debug("Verified conditions, and found no problem");
 };

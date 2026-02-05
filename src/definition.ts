@@ -28,3 +28,8 @@ export interface IContext {
   nextRelease: INextRelease;
   logger: Signale;
 }
+
+export type PluginConfig = {
+  publicationTask?: string;
+  skipPublishing?: boolean;
+};
