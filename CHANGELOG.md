@@ -1,3 +1,10 @@
+## [1.10.4](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.3...v1.10.4) (2026-03-31)
+
+
+### Reverts
+
+* Revert "ci: restore Takumi Guard registry before pnpm install" ([f2c0136](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/f2c01361020d3f9a65dbfc01eedb212b293eef15))
+
 ## [1.10.3](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.2...v1.10.3) (2025-12-03)
 
 
