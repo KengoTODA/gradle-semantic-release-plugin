@@ -1,3 +1,10 @@
+## [1.10.5](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.4...v1.10.5) (2026-03-31)
+
+
+### Bug Fixes
+
+* scope pnpm preinstall guard to repository installs ([ac840ff](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/ac840ffd8dd5b9aaea60cc29cd34f392456dac29))
+
 ## [1.10.4](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.3...v1.10.4) (2026-03-31)
 
 
