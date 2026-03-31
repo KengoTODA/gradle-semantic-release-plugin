@@ -23,7 +23,7 @@
   "packageManager": "pnpm@10.21.0",
   "scripts": {
     "all": "pnpm pack && pnpm test",
-    "preinstall": "node scripts/enforce-pnpm.cjs",
+    "preinstall": "node -e \"if (process.env.INIT_CWD && process.env.INIT_CWD === process.cwd()) { require('./scripts/enforce-pnpm.cjs'); }\"",
     "prepack": "tsc",
     "test": "jest",
     "semantic-release": "semantic-release",

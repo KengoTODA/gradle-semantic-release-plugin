@@ -23,7 +23,8 @@ To apply this semantic-release plugin, you need to fulfill the following precond
 Follow [install guide](https://semantic-release.gitbook.io/semantic-release/usage/installation) and [CI configuration guide](https://semantic-release.gitbook.io/semantic-release/usage/ci-configuration) described in the semantic-release official document.
 
 To manage version of toolset, we recommend you to have a `package.json` in your project root directory. Manage both of `semantic-release` and its plugins as `devDependencies`.
-Use `pnpm` as the package manager for both local development and CI. Enable Corepack once and install dependencies with `pnpm install`.
+Use `pnpm` as the package manager for this repository's local development and CI. Enable Corepack once and install dependencies with `pnpm install`.
+Downstream consumers can keep using their own package manager when they install `gradle-semantic-release-plugin` as a dependency.
 
 Refer [the spotbugs-gradle-plugin project](https://github.com/spotbugs/spotbugs-gradle-plugin) as a working example.
 
