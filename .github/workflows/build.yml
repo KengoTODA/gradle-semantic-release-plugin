@@ -17,15 +17,16 @@ jobs:
       - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
         with:
           fetch-depth: 0
+      - uses: flatt-security/setup-takumi-guard-npm@0f69e1fc4f2c4e55dd52abcafa7c4249cd6c7e50 # v1
       - name: Set up Node.js
         uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
         with:
           node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
       - name: Enable Corepack
         run: corepack enable
-      - uses: flatt-security/setup-takumi-guard-npm@0f69e1fc4f2c4e55dd52abcafa7c4249cd6c7e50 # v1
       - name: Set up JDK 17
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5
         with:
@@ -43,12 +44,6 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           pnpm test
-      - name: Configure npm registry for publish
-        if: matrix.node-version == 22
-        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
-        with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org'
       - name: Run semantic-release
         if: matrix.node-version == 22
         run: |
