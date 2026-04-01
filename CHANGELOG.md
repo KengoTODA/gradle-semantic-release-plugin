@@ -1,3 +1,10 @@
+## [1.10.9](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.8...v1.10.9) (2026-04-01)
+
+
+### Bug Fixes
+
+* **ci:** use semantic-release/npm to publish changes to npmjs ([a915e82](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/a915e8258faccaee95ad308dfec3522d2a54141d))
+
 ## [1.10.8](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.7...v1.10.8) (2026-04-01)
 
 
