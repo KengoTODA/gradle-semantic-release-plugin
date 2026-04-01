@@ -1,3 +1,10 @@
+## [1.10.8](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.7...v1.10.8) (2026-04-01)
+
+
+### Bug Fixes
+
+* **ci:** move takumi-guard to the sbom job ([fcb2f56](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/fcb2f5681149a41340de7d4d8183e134dc579385))
+
 ## [1.10.7](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.6...v1.10.7) (2026-04-01)
 
 
