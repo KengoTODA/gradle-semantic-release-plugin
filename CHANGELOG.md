@@ -1,3 +1,10 @@
+## [1.10.6](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.5...v1.10.6) (2026-04-01)
+
+
+### Bug Fixes
+
+* pin semantic-release npm plugin for OIDC publish ([01e4828](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/01e4828ce1de776e514f195a122590b3e77800ba))
+
 ## [1.10.5](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.4...v1.10.5) (2026-03-31)
 
 
