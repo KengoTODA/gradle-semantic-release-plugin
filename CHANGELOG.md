@@ -1,3 +1,10 @@
+## [1.10.7](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.6...v1.10.7) (2026-04-01)
+
+
+### Bug Fixes
+
+* **ci:** bypass semantic-release npm publish for trusted publisher ([65b66f8](https://github.com/KengoTODA/gradle-semantic-release-plugin/commit/65b66f8ac153de80cd8816ccef3dfa6fda3880fa))
+
 ## [1.10.6](https://github.com/KengoTODA/gradle-semantic-release-plugin/compare/v1.10.5...v1.10.6) (2026-04-01)
 
 
