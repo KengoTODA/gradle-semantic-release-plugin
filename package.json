@@ -38,6 +38,7 @@
     "@jest/transform": "29.7.0",
     "@jest/types": "29.6.3",
     "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/exec": "7.1.0",
     "@semantic-release/git": "10.0.1",
     "@semantic-release/npm": "13.1.3",
     "@types/signale": "1.4.7",
@@ -71,11 +72,18 @@
         "path": "@semantic-release/changelog",
         "changelogFile": "CHANGELOG.md"
       },
-      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/npm",
+        "npmPublish": false,
+        "tarballDir": "dist"
+      },
       "@semantic-release/git"
     ],
     "publish": [
-      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/exec",
+        "publishCmd": "npm publish ./dist/*.tgz"
+      },
       "@semantic-release/github"
     ],
     "generateNotes": [
