@@ -1,5 +1,5 @@
 module.exports = {
   prepare: require("./prepare").default,
-  publish: require("./publish"),
+  publish: require("./publish").default,
   verifyConditions: require("./verify-conditions"),
 };

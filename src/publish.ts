@@ -1,10 +1,22 @@
-import { IContext } from "./definition";
+import { getTaskToPublish } from "./config";
+import { IContext, PluginConfig } from "./definition";
 import { publishArtifact } from "./gradle";
 
-module.exports = async function publish(
-  pluginConfig: object,
+export default async function publish(
+  pluginConfig: PluginConfig,
   context: IContext,
 ) {
   const { cwd, env, logger } = context;
-  await publishArtifact(cwd, env as NodeJS.ProcessEnv, logger);
-};
+
+  if (pluginConfig.skipPublishing) {
+    return;
+  }
+
+  const task = await getTaskToPublish(
+    pluginConfig,
+    cwd,
+    env as NodeJS.ProcessEnv,
+    logger,
+  );
+  await publishArtifact(cwd, task, env as NodeJS.ProcessEnv, logger);
+}
